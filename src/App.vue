@@ -1,5 +1,10 @@
-<script setup>
-
+<script>
+import HelloWorld from './components/HelloWorld.vue';
+export default {
+  components: {
+    HelloWorld
+  }
+}
 </script>
 
 <template>
@@ -28,6 +33,7 @@
       </div>
     </div>
   </nav>
+   <HelloWorld msg="Gagi"/>
 </template>
 
 <style scoped>
