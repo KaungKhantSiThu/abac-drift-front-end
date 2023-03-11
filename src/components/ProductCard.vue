@@ -47,9 +47,9 @@ const props = defineProps({
 
 <style scoped>
 .product-card {
-  width: 340px;
+  width: 300px;
 	height: auto;
-	min-height: 450px;
+	min-height: 400px;
   padding: 10px 15px;
 	margin-bottom: 24px;
 	margin-right: 10px;

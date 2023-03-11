@@ -114,14 +114,12 @@ import ProductList from "./components/ProductList.vue";
           <button type="button" class="btn btn-primary">Search</button>
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-md">
         <div class="row">
           <h2>Recommended Cars</h2>
         </div>
         <div>
-          <div class="row my-3">
-            <product-list />
-          </div>
+          <product-list />
         </div>
       </div>
     </div>

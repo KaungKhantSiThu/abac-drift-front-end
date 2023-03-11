@@ -57,6 +57,6 @@ const cars = ref([
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
 }
 </style>
