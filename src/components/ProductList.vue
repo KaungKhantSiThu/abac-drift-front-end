@@ -50,6 +50,36 @@ const cars = ref([
     manufacturer: "Mercedez",
     imageURL: "src/assets/cars/car_two.jpg"
   },
+  {
+    title: "Mercedes-Benz",
+    price: 979000,
+    gear: "auto",
+    mileage: 5000,
+    engine: 1500,
+    year: 2013,
+    manufacturer: "Mercedez",
+    imageURL: "src/assets/cars/car_two.jpg"
+  },
+  {
+    title: "Mercedes-Benz",
+    price: 979000,
+    gear: "auto",
+    mileage: 5000,
+    engine: 1500,
+    year: 2013,
+    manufacturer: "Mercedez",
+    imageURL: "src/assets/cars/car_two.jpg"
+  },
+  {
+    title: "Mercedes-Benz",
+    price: 979000,
+    gear: "auto",
+    mileage: 5000,
+    engine: 1500,
+    year: 2013,
+    manufacturer: "Mercedez",
+    imageURL: "src/assets/cars/car_two.jpg"
+  }
 ])
 </script>
 

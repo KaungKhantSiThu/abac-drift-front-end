@@ -8,9 +8,7 @@ import ProductList from "./components/ProductList.vue";
   <header>
     <nav-bar />
   </header>
-  <div class="container">
-    <product-list />
-  </div>
+  <product-list />
 </template>
 
 <style scoped>
