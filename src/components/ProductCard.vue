@@ -4,7 +4,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ car.title }}</h5>
       <h6 class="text-secondary">{{ car.manufacturer }}</h6>
-      <div class="row">
+      <div class="row row-cols-2">
         <div class="col text-center">
           <h6 class="mb-2">Year</h6>
           <p>{{ car.year }}</p>
@@ -22,13 +22,13 @@
           <p>{{ car.gear }}</p>
         </div>
       </div>
-      <div class="row mx-3">
-        <div class="col text-start">
+      <div class="row">
+        <div class="col text-center">
           <i class="fa-solid fa-eye"></i>
           <span>500</span>
         </div>
         <div class="col text-end">
-          <h4><span>฿</span> {{ car.price }}</h4>
+          <h5>฿ {{ car.price }}</h5>
         </div>
       </div>
     </div>
