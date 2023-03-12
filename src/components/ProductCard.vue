@@ -47,14 +47,18 @@ const props = defineProps({
 
 <style scoped>
 .product-card {
-  width: 300px;
+  width: 250px;
 	height: auto;
-	min-height: 400px;
-  padding: 10px 15px;
-	margin-bottom: 24px;
-	margin-right: 10px;
+	min-height: 350px;
+	margin: 10px;
 	overflow: hidden;
+  border-radius: 10px;
 	transition: all 0.2s linear;
 	cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.01);
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 </style>
