@@ -1,19 +1,26 @@
-<script setup>
-import NavBar from "./components/NavBar.vue";
-import ProductList from "./components/ProductList.vue";
-
-</script>
-
 <template>
-  <header>
-    <nav-bar />
-  </header>
-  <product-list />
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/mechanic">Mechanic</router-link>
+  </nav>
+  <router-view/>
 </template>
 
-<style scoped>
-body {
-  min-height: 75rem;
+<style>
+nav {
+  padding: 30px;
 }
 
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.nav-details a {
+  color: white;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
