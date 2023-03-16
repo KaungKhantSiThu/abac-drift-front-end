@@ -18,7 +18,7 @@ const cars = ref([
     engine: 1200,
     year: 2019,
     manufacturer: "Toyota",
-    imageURL: "src/assets/cars/car_one.jpg"
+    imageURL: "/assets/cars/car_one.jpg"
   },
   {
     title: "Mercedes-Benz",
@@ -28,7 +28,7 @@ const cars = ref([
     engine: 1500,
     year: 2013,
     manufacturer: "Mercedez",
-    imageURL: "public/assets/cars/car_one.jpg"
+    imageURL: "/assets/cars/car_one.jpg"
   },
   {
     title: "Toyota Hilux",
@@ -38,7 +38,7 @@ const cars = ref([
     engine: 1200,
     year: 2019,
     manufacturer: "Toyota",
-    imageURL: "public/assets/cars/car_one.jpg"
+    imageURL: "/assets/cars/car_one.jpg"
   },
   {
     title: "Mercedes-Benz",
@@ -48,7 +48,7 @@ const cars = ref([
     engine: 1500,
     year: 2013,
     manufacturer: "Mercedez",
-    imageURL: "public/assets/cars/car_two.jpg"
+    imageURL: "/assets/cars/car_two.jpg"
   },
   {
     title: "Mercedes-Benz",
@@ -58,7 +58,7 @@ const cars = ref([
     engine: 1500,
     year: 2013,
     manufacturer: "Mercedez",
-    imageURL: "public/assets/cars/car_two.jpg"
+    imageURL: "/assets/cars/car_two.jpg"
   },
   {
     title: "Mercedes-Benz",
@@ -68,7 +68,7 @@ const cars = ref([
     engine: 1500,
     year: 2013,
     manufacturer: "Mercedez",
-    imageURL: "public/assets/cars/car_two.jpg"
+    imageURL: "/assets/cars/car_two.jpg"
   },
   {
     title: "Mercedes-Benz",
@@ -78,7 +78,7 @@ const cars = ref([
     engine: 1500,
     year: 2013,
     manufacturer: "Mercedez",
-    imageURL: "public/assets/cars/car_two.jpg"
+    imageURL: "/assets/cars/car_two.jpg"
   }
 ])
 </script>
