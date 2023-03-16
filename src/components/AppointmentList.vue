@@ -19,7 +19,7 @@ const appointments = ref([
       price: 256000,
       engine: 1200,
       year: 2019,
-      imageURL: "src/assets/cars/car_one.jpg"
+      imageURL: "public/assets/cars/car_one.jpg"
     }
   },
   {
@@ -31,7 +31,7 @@ const appointments = ref([
       price: 256000,
       engine: 1200,
       year: 2019,
-      imageURL: "src/assets/cars/car_two.jpg"
+      imageURL: "public/assets/cars/car_two.jpg"
     }
   },
   {
@@ -43,7 +43,7 @@ const appointments = ref([
       price: 256000,
       engine: 1200,
       year: 2019,
-      imageURL: "src/assets/cars/car_three.jpg"
+      imageURL: "public/assets/cars/car_three.jpg"
     }
   }
 ])
