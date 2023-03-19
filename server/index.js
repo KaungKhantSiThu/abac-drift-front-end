@@ -5,16 +5,16 @@ const cors = require('cors');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors);
+//app.use(cors);
 
-// const appointments = require('./routes/api/appointments')
-//
-// app.use('/api/appointments', appointments);
+const motorcycles = require('./routes/api/motorcycles')
+const appointments = require('./routes/api/appointments')
 
-app.get('/', async (req, res) => {
-    res.send('Hello World!')
-})
+app.use('/api/motorcycles', motorcycles);
+app.use('/api/appointments', appointments);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`)
+});
