@@ -1,21 +1,22 @@
 {
   "name": "abac-drift-front-end",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "ABAC Drift",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
+  "author": "Kaung Khant Si Thu",
+  "license": "ISC",
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3",
-    "vue": "^3.2.45",
-    "vue-router": "4"
+    "axios": "^1.3.4",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.1.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "vite": "^4.1.0"
+    "nodemon": "^2.0.21"
   }
 }
