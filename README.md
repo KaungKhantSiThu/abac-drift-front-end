@@ -1,8 +1,26 @@
-# Nuxt 3 CRUD App
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
-A Nuxt 3 app that displays how to use [Server Routes & Middleware](https://v3.nuxtjs.org/guide/directory-structure/server) to perform CRUD operations.
+## Project name
+ABAC Drift
 
-## Stuff used
+## Team members
+- Kaung Khant Si Thu   6228104
+- Kyaw Zin Thein 6228105
+- Renatta Fernandez 6338017
+ 
+## Project description
+
+### Entities (Buyer, Seller & Motorcycle)
+Buying and selling second-hand motorcycle platform. The sellers will upload their motorcycles along with appointment day and time available for each one. Buyers will filter the motorcycle data according to their preferences and select an available appointment. Our first entity is the motorcycle information, including appointment details. The second entity is seller information and the third one is buyer information.
+ 
+## Tech Stack
+- Vue.js (front-end)
+- Node.js (JS runtime environment)
+- Mongo DB (database)
+- Express.js (backend)
+
+
+<!-- AUTO-GENERATED-CONTENT:END -->
 
 - [Nuxt 3](https://v3.nuxtjs.org)
 - [TailwindCSS](https://tailwindcss.com/)
