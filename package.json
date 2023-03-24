@@ -27,6 +27,7 @@
 		"nuxt-icon": "^0.1.5",
 		"pinia": "^2.0.22",
 		"vee-validate": "^4.6.7",
+		"vue-picture-input": "^2.4.0",
 		"vue-toastification": "next",
 		"vue3-easy-data-table": "^1.4.19"
 	}
