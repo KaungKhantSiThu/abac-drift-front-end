@@ -1,4 +1,4 @@
-globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/node-fetch-native/dist/polyfill.mjs';
+globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file://C:/Users/Win10/abac-drift-front-end/node_modules/node-fetch-native/dist/polyfill.mjs';
 import { Server } from 'http';
 import { tmpdir } from 'os';
 import { join } from 'path';
@@ -78,7 +78,7 @@ function timingMiddleware(_req, res, next) {
   next();
 }
 
-const serverAssets = [{"baseName":"server","dir":"/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"C:/Users/Win10/abac-drift-front-end/server/assets"}];
 
 const assets = createStorage();
 
@@ -92,10 +92,10 @@ const useStorage = () => storage;
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\Win10\\abac-drift-front-end","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\Win10\\abac-drift-front-end\\server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\Win10\\abac-drift-front-end\\.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\Win10\\abac-drift-front-end\\.nuxt\\cache","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -293,13 +293,13 @@ function cloneWithProxy(obj, overrides) {
 }
 const cachedEventHandler = defineCachedEventHandler;
 
-const _TgHpPHZr7o = async (_nitroApp) => {
+const _56j1i2cG1g = async (_nitroApp) => {
   const config = useRuntimeConfig();
   mongoose.connect(config.MONGO_URI).then(() => console.log(`Connected to DB`)).catch((e) => console.log(e));
 };
 
 const plugins = [
-  _TgHpPHZr7o
+  _56j1i2cG1g
 ];
 
 function hasReqHeader(req, header, includes) {
@@ -359,7 +359,7 @@ const errorHandler = (async function errorhandler(error, event) {
   const isErrorPage = event.req.url?.startsWith("/__nuxt_error");
   let html = !isErrorPage ? await $fetch(withQuery("/__nuxt_error", errorObject)).catch(() => null) : null;
   if (!html) {
-    const { template } = await import('file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/@nuxt/ui-templates/dist/templates/error-dev.mjs') ;
+    const { template } = await import('file://C:/Users/Win10/abac-drift-front-end/node_modules/@nuxt/ui-templates/dist/templates/error-dev.mjs') ;
     {
       errorObject.description = errorObject.message;
     }
@@ -577,8 +577,8 @@ function publicAssetsURL(...path) {
   return path.length ? joinURL(publicBase, ...path) : publicBase;
 }
 
-const getClientManifest = () => import('/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
-const getServerEntry = () => import('/Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
+const getClientManifest = () => import('file://C:/Users/Win10/abac-drift-front-end/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file://C:/Users/Win10/abac-drift-front-end/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   if (!manifest) {
