@@ -13,4 +13,6 @@ const schema = new Schema(
         imageURL: String
     }
 );
+
+export const motorcycleSchema = schema;
 export default mongoose.model("Motorcycle", schema, "motorcycles");
