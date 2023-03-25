@@ -1,5 +1,5 @@
 <template>
-  <div class="card product-card">
+  <div class="card product-card" v-on:click="navigateToMotorCycleDetailPage">
     <img :src="motorcycle.imageURL" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ motorcycle.title }}</h5>
@@ -44,6 +44,15 @@ const props = defineProps({
   }
 })
 
+</script>
+<script>
+export default {
+  methods: {
+    navigateToMotorCycleDetailPage() {
+      this.$router.push('/motorcycles/detail')
+    }
+  }
+}
 </script>
 
 <style scoped>
