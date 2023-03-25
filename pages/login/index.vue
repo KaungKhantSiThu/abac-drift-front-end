@@ -34,7 +34,7 @@ const login = async () => {
 onMounted(() => {
   watchEffect(() => {
     if (user.value) {
-      navigateTo('/motorcycles')
+      navigateTo('/')
     } else {
       navigateTo('/login')
     }

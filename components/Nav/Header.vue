@@ -31,12 +31,12 @@
 
   const client = useSupabaseAuthClient();
   const user = useSupabaseUser();
-
   async function logOut() {
     const { error } = await client.auth.signOut();
     if (error) return;
     navigateTo('/login')
   }
+
 </script>
 
 <style scoped>

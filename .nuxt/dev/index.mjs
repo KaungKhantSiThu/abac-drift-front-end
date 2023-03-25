@@ -5,7 +5,7 @@ import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
 import { provider, isWindows } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
-import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
+import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, createError, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
 import mongoose from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/mongoose/index.js';
 import { createRenderer } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import devalue from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
@@ -414,12 +414,16 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
 });
 
 const _lazy_ijpkuR = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$2; });
 const _lazy_3895a6 = () => Promise.resolve().then(function () { return index_get$1; });
+const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post; });
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '/api/motorcycles', handler: _lazy_ijpkuR, lazy: true, middleware: false, method: "get" },
+  { route: '/api/motorcycles/create', handler: _lazy_L8Vs0W, lazy: true, middleware: false, method: "post" },
   { route: '/api/appointments', handler: _lazy_3895a6, lazy: true, middleware: false, method: "get" },
+  { route: '/api/appointments/create', handler: _lazy_sKycXm, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_error', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined },
   { route: '/api/_supabase/session', handler: _Y8xdz0, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined }
@@ -522,6 +526,20 @@ const index_get$3 = /*#__PURE__*/Object.freeze({
   'default': index_get$2
 });
 
+const create_post$1 = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  try {
+    await MotorcycleModel.create(body);
+  } catch (e) {
+    throw createError({ message: e.message });
+  }
+});
+
+const create_post$2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': create_post$1
+});
+
 const { Schema } = mongoose;
 const schema = new Schema(
   {
@@ -545,6 +563,10 @@ const index_get = defineEventHandler(async (event) => {
 const index_get$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': index_get
+});
+
+const create_post = /*#__PURE__*/Object.freeze({
+  __proto__: null
 });
 
 function buildAssetsURL(...path) {
