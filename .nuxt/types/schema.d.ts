@@ -4,6 +4,7 @@ declare module '@nuxt/schema' {
     ["tailwindcss"]?: typeof import("@nuxtjs/tailwindcss").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["icon"]?: typeof import("nuxt-icon").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["pinia"]?: typeof import("@pinia/nuxt").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["supabase"]?: typeof import("@nuxtjs/supabase").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
   }
   interface RuntimeConfig {
@@ -16,8 +17,32 @@ declare module '@nuxt/schema' {
     },
 
     MONGO_URI: string,
+
+    supabase: {
+        serviceKey: any,
+    },
   }
   interface PublicRuntimeConfig {
-  
+     supabase: {
+        url: string,
+
+        key: string,
+
+        client: any,
+
+        redirect: boolean,
+
+        cookies: {
+             name: string,
+
+             lifetime: number,
+
+             domain: string,
+
+             path: string,
+
+             sameSite: string,
+        },
+    },
   }
 }

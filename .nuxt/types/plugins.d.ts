@@ -10,6 +10,9 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt/dist/head/runtime/lib/vueuse-head.plugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/head/runtime/plugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/pages/runtime/router").default> &
+  InjectionType<typeof import("../../node_modules/@nuxtjs/supabase/dist/runtime/plugins/auth-redirect").default> &
+  InjectionType<typeof import("../../node_modules/@nuxtjs/supabase/dist/runtime/plugins/supabase.client").default> &
+  InjectionType<typeof import("../../node_modules/@nuxtjs/supabase/dist/runtime/plugins/supabase.server").default> &
   InjectionType<typeof import("../../node_modules/@pinia/nuxt/dist/runtime/plugin.vue3").default> &
   InjectionType<typeof import("../../plugins/datatabless.client").default> &
   InjectionType<typeof import("../../plugins/toast.client").default> &
