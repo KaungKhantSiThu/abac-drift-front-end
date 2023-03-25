@@ -72,6 +72,7 @@ declare global {
   const updateAppConfig: typeof import('../../node_modules/nuxt/dist/app')['updateAppConfig']
   const useActiveRoute: typeof import('../../node_modules/nuxt/dist/app')['useActiveRoute']
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']
+  const useAppointmentStore: typeof import('../../composables/appointmentStore')['useAppointmentStore']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app')['useAsyncData']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app')['useCookie']
@@ -184,6 +185,7 @@ declare module '@vue/runtime-core' {
     readonly updateAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['updateAppConfig']>
     readonly useActiveRoute: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useActiveRoute']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useAppConfig']>
+    readonly useAppointmentStore: UnwrapRef<typeof import('../../composables/appointmentStore')['useAppointmentStore']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app')['useCookie']>

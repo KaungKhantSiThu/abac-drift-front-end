@@ -1,3 +1,6 @@
+
+
+
 <template>
   <div class="container">
     <product-card v-for="motorcycle in motorcycleStore.motorcycles" :motorcycle="motorcycle"/>
@@ -5,12 +8,14 @@
 </template>
 
 <script setup lang="ts">
+import ProductCard from "~/components/ProductCard.vue";
+import {useMotorcycleStore} from "~/composables/motorcycleStore";
+
 definePageMeta({
   middleware: ['auth']
 })
 
-import ProductCard from "~/components/ProductCard.vue";
-import {useMotorcycleStore} from "~/composables/motorcycleStore";
+
 
 const motorcycleStore = useMotorcycleStore();
 

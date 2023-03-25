@@ -7,6 +7,9 @@
 
 <script setup>
 
+import AppointmentCard from "~/components/AppointmentCard.vue";
+import {useAppointmentStore} from "~/composables/appointmentStore";
+
 definePageMeta({
   middleware: ['auth']
 })
@@ -19,9 +22,6 @@ onMounted(() => {
     }
   })
 })
-
-import AppointmentCard from "~/components/AppointmentCard.vue";
-import {useAppointmentStore} from "~/composables/appointmentStore";
 
 const appointmentStore = useAppointmentStore();
 

@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="row my-3">
     <div class="card" style="width: 60rem;">
@@ -44,7 +46,7 @@
 
               </div>
               <div class="col-2">
-                <button type="button" class="btn p" onclick="console.log('tapped!')">View <span><i class="fa-solid fa-arrow-right"></i></span></button>
+                <button type="button" class="btn p" v-on:click="navigateToDetailPage">View <span><i class="fa-solid fa-arrow-right"></i></span></button>
               </div>
             </div>
           </div>
@@ -62,6 +64,16 @@ const props = defineProps({
     required: true
   }
 })
+</script>
+
+<script>
+export default {
+  methods: {
+    navigateToDetailPage() {
+      this.$router.push('/appointments/detail')
+    }
+  }
+}
 </script>
 
 <style scoped>
