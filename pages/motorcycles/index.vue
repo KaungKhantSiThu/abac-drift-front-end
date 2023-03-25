@@ -27,6 +27,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['auth']
+})
+
 import ProductCard from "~/components/ProductCard.vue";
 import { useMotorcycleStore } from "~/composables/motorcycleStore";
 
@@ -39,6 +43,15 @@ const motorcycleModal = ref();
 const removeMotorcycle = async (motorcycle) => {
   await motorcycleStore.remove(motorcycle._id);
 };
+
+const user = useSupabaseUser();
+onMounted(() => {
+  watchEffect(() => {
+    if (!user.value)  {
+      navigateTo('/login')
+    }
+  })
+})
 
 </script>
 

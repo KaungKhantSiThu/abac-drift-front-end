@@ -9,3 +9,13 @@ export interface IMotorcycle {
 	manufacturer: string,
 	imageURL: string
 }
+
+export interface IAppointment {
+	_id?: string;
+	datetime: Date,
+	seller: string,
+	buyer: string,
+	status: string,
+	location: string,
+	motorcycle: IMotorcycle
+}

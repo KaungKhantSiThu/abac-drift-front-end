@@ -4,24 +4,24 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
-import { provider, isWindows } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
-import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, getQuery } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/h3/dist/index.mjs';
-import mongoose from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/mongoose/index.js';
-import { createRenderer } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import devalue from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
-import { renderToString } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/vue/server-renderer/index.mjs';
-import { parseURL, withQuery, joinURL } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/ufo/dist/index.mjs';
-import destr from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/destr/dist/index.mjs';
-import { snakeCase } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/scule/dist/index.mjs';
-import { createFetch as createFetch$1, Headers } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/ohmyfetch/dist/node.mjs';
-import { createRouter as createRouter$1 } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/radix3/dist/index.mjs';
-import { createCall, createFetch } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/hookable/dist/index.mjs';
-import { hash } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/ohash/dist/index.mjs';
-import { createStorage } from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://C:/Users/Win10/abac-drift-front-end/node_modules/unstorage/dist/drivers/fs.mjs';
+import { provider, isWindows } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
+import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, createError, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
+import mongoose from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/mongoose/index.js';
+import { createRenderer } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import devalue from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
+import { renderToString } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue/server-renderer/index.mjs';
+import { parseURL, withQuery, joinURL } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ufo/dist/index.mjs';
+import destr from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/destr/dist/index.mjs';
+import { snakeCase } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/scule/dist/index.mjs';
+import { createFetch as createFetch$1, Headers } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ohmyfetch/dist/node.mjs';
+import { createRouter as createRouter$1 } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/radix3/dist/index.mjs';
+import { createCall, createFetch } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/hookable/dist/index.mjs';
+import { hash } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ohash/dist/index.mjs';
+import { createStorage } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unstorage/dist/drivers/fs.mjs';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{},"MONGO_URI":"mongodb+srv://developer:pfHbRhhpaHHoIWfL@cluster0.bmqt335.mongodb.net/abac-drift"};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{"supabase":{"url":"https://xpggnsnswzjrzmbkyucc.supabase.co","key":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwZ2duc25zd3pqcnptYmt5dWNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzkzNzg1MzQsImV4cCI6MTk5NDk1NDUzNH0.VO4eZCE0BXfoKaVeT_bb-gucsYPM8mwueLrfsfXu2oU","client":{},"redirect":false,"cookies":{"name":"sb","lifetime":28800,"domain":"","path":"/","sameSite":"lax"}}},"MONGO_URI":"mongodb+srv://developer:pfHbRhhpaHHoIWfL@cluster0.bmqt335.mongodb.net/abac-drift","supabase":{}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {
@@ -46,8 +46,8 @@ function overrideConfig(obj, parentKey = "") {
   }
 }
 overrideConfig(_runtimeConfig);
-const config = deepFreeze(_runtimeConfig);
-const useRuntimeConfig = () => config;
+const config$1 = deepFreeze(_runtimeConfig);
+const useRuntimeConfig = () => config$1;
 function deepFreeze(object) {
   const propNames = Object.getOwnPropertyNames(object);
   for (const name of propNames) {
@@ -369,13 +369,64 @@ const errorHandler = (async function errorhandler(error, event) {
   event.res.end(html);
 });
 
-const _lazy_gPvnlX = () => Promise.resolve().then(function () { return index_get$1; });
-const _lazy_HLGcwh = () => Promise.resolve().then(function () { return renderer$1; });
+const config = useRuntimeConfig().public;
+const _Y8xdz0 = defineEventHandler(async (event) => {
+  assertMethod(event, "POST");
+  const body = await readBody(event);
+  const cookieOptions = config.supabase.cookies;
+  const { event: signEvent, session } = body;
+  if (!event) {
+    throw new Error("Auth event missing!");
+  }
+  if (signEvent === "SIGNED_IN" || signEvent === "TOKEN_REFRESHED") {
+    if (!session) {
+      throw new Error("Auth session missing!");
+    }
+    setCookie(
+      event,
+      `${cookieOptions.name}-access-token`,
+      session.access_token,
+      {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite
+      }
+    );
+    setCookie(event, `${cookieOptions.name}-refresh-token`, session.refresh_token, {
+      domain: cookieOptions.domain,
+      maxAge: cookieOptions.lifetime ?? 0,
+      path: cookieOptions.path,
+      sameSite: cookieOptions.sameSite
+    });
+  }
+  if (signEvent === "SIGNED_OUT") {
+    setCookie(event, `${cookieOptions.name}-access-token`, "", {
+      maxAge: -1,
+      path: cookieOptions.path
+    });
+    setCookie(event, `${cookieOptions.name}-refresh-token`, "", {
+      maxAge: -1,
+      path: cookieOptions.path
+    });
+  }
+  return "auth cookie set";
+});
+
+const _lazy_ijpkuR = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$2; });
+const _lazy_3895a6 = () => Promise.resolve().then(function () { return index_get$1; });
+const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post; });
+const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/api/motorcycles', handler: _lazy_gPvnlX, lazy: true, middleware: false, method: "get" },
-  { route: '/__nuxt_error', handler: _lazy_HLGcwh, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_HLGcwh, lazy: true, middleware: false, method: undefined }
+  { route: '/api/motorcycles', handler: _lazy_ijpkuR, lazy: true, middleware: false, method: "get" },
+  { route: '/api/motorcycles/create', handler: _lazy_L8Vs0W, lazy: true, middleware: false, method: "post" },
+  { route: '/api/appointments', handler: _lazy_3895a6, lazy: true, middleware: false, method: "get" },
+  { route: '/api/appointments/create', handler: _lazy_sKycXm, lazy: true, middleware: false, method: "post" },
+  { route: '/__nuxt_error', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined },
+  { route: '/api/_supabase/session', handler: _Y8xdz0, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -451,8 +502,8 @@ server.listen(listenAddress, () => {
   process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException]", err));
 }
 
-const { Schema } = mongoose;
-const schema = new Schema(
+const { Schema: Schema$1 } = mongoose;
+const schema$1 = new Schema$1(
   {
     title: String,
     price: Number,
@@ -464,15 +515,58 @@ const schema = new Schema(
     imageURL: String
   }
 );
-const MotorcycleModel = mongoose.model("Motorcycle", schema, "motorcycles");
+const MotorcycleModel = mongoose.model("Motorcycle", schema$1, "motorcycles");
+
+const index_get$2 = defineEventHandler(async (event) => {
+  return MotorcycleModel.find();
+});
+
+const index_get$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': index_get$2
+});
+
+const create_post$1 = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  try {
+    await MotorcycleModel.create(body);
+  } catch (e) {
+    throw createError({ message: e.message });
+  }
+});
+
+const create_post$2 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': create_post$1
+});
+
+const { Schema } = mongoose;
+const schema = new Schema(
+  {
+    datetime: Date,
+    seller: String,
+    buyer: String,
+    status: String,
+    location: String,
+    motorcycle: {
+      type: Schema.Types.ObjectId,
+      ref: "Motorcycle"
+    }
+  }
+);
+const AppointmentModel = mongoose.model("Appointment", schema, "appointments");
 
 const index_get = defineEventHandler(async (event) => {
-  return MotorcycleModel.find();
+  return AppointmentModel.find().populate("motorcycle");
 });
 
 const index_get$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': index_get
+});
+
+const create_post = /*#__PURE__*/Object.freeze({
+  __proto__: null
 });
 
 function buildAssetsURL(...path) {
