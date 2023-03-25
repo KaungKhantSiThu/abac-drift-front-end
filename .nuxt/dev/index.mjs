@@ -413,8 +413,8 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
   return "auth cookie set";
 });
 
-const _lazy_ijpkuR = () => Promise.resolve().then(function () { return index_get$2; });
-const _lazy_3895a6 = () => Promise.resolve().then(function () { return index_get; });
+const _lazy_ijpkuR = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_3895a6 = () => Promise.resolve().then(function () { return index_get$1; });
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
@@ -498,8 +498,8 @@ server.listen(listenAddress, () => {
   process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException]", err));
 }
 
-const { Schema } = mongoose;
-const schema = new Schema(
+const { Schema: Schema$1 } = mongoose;
+const schema$1 = new Schema$1(
   {
     title: String,
     price: Number,
@@ -511,19 +511,40 @@ const schema = new Schema(
     imageURL: String
   }
 );
-const MotorcycleModel = mongoose.model("Motorcycle", schema, "motorcycles");
+const MotorcycleModel = mongoose.model("Motorcycle", schema$1, "motorcycles");
 
-const index_get$1 = defineEventHandler(async (event) => {
+const index_get$2 = defineEventHandler(async (event) => {
   return MotorcycleModel.find();
 });
 
-const index_get$2 = /*#__PURE__*/Object.freeze({
+const index_get$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  'default': index_get$1
+  'default': index_get$2
 });
 
-const index_get = /*#__PURE__*/Object.freeze({
-  __proto__: null
+const { Schema } = mongoose;
+const schema = new Schema(
+  {
+    datetime: Date,
+    seller: String,
+    buyer: String,
+    status: String,
+    location: String,
+    motorcycle: {
+      type: Schema.Types.ObjectId,
+      ref: "Motorcycle"
+    }
+  }
+);
+const AppointmentModel = mongoose.model("Appointment", schema, "appointments");
+
+const index_get = defineEventHandler(async (event) => {
+  return AppointmentModel.find().populate("motorcycle");
+});
+
+const index_get$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': index_get
 });
 
 function buildAssetsURL(...path) {
