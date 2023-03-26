@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { IAppointment } from "~~/types";
 import useToast from "./useToast";
+import motorcycles from "~/server/api/motorcycles";
 
 export const useAppointmentStore = defineStore("appointment-store", {
     state: () => ({
@@ -16,6 +17,12 @@ export const useAppointmentStore = defineStore("appointment-store", {
             } catch (e) {
                 useToast().error(e.message);
             }
+        }
+    },
+
+    getters: {
+        getAppointmentById: (state) => {
+            return (appointmentId) => state.appointments.find((appointment) => appointment._id === appointmentId)
         }
     }
 
