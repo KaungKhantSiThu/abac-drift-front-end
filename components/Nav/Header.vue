@@ -6,7 +6,7 @@
 			<nav class="flex items-center space-x-2">
 				<template v-if="user" v-for="n in menu" :key="`menuItem${n.name}`">
 					<NuxtLink
-						class="px-3 py-2 text-sm font-medium text-white "
+						class="px-3 py-2 text-sm font-medium text-gray-500 transition-all rounded-lg link hover:text-primary hover:bg-primary-50"
 						:to="n.link"
 						>{{ n.name }}</NuxtLink
 					>

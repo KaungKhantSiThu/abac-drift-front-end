@@ -1,6 +1,6 @@
 <template>
     <div class="card product-card">
-      <NuxtLink :to="{ path: 'MotorDetails', params: { _id: motorcycle._id } }">
+      <NuxtLink :to="{ path: `/motorcycles/${motorcycle._id}` }" :key="motorcycle._id">
       <img :src="motorcycle.imageURL" class="card-img-top" alt="...">
     </NuxtLink>
       <div class="card-body">

@@ -50,11 +50,6 @@
 
                                         <FormInput v-model="motorcycle.imageURL" action="{Formeezy-Endpoint}" method="POST" enctype="multipart/form-data"
                                             type="file" name="my-file" label="Motorcycle  Picture" />
-
-
-
-
-
                                     </div>
                                 </div>
                                 <!-- Form buttons -->

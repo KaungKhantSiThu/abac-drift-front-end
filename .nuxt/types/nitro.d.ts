@@ -2,9 +2,9 @@
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
-    '/api/motorcycles': Awaited<ReturnType<typeof import('../../server/api/motorcycles/index.get').default>>
+    '/api/motorcycles': Awaited<ReturnType<typeof import('../../server/api/motorcycles/index').default>>
     '/api/motorcycles/create': Awaited<ReturnType<typeof import('../../server/api/motorcycles/create.post').default>>
-    '/api/appointments': Awaited<ReturnType<typeof import('../../server/api/appointments/index.get').default>>
+    '/api/appointments': Awaited<ReturnType<typeof import('../../server/api/appointments/index').default>>
     '/api/appointments/create': Awaited<ReturnType<typeof import('../../server/api/appointments/create.post').default>>
     '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
     '/api/_supabase/session': Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/supabase/dist/runtime/server/api/session').default>>

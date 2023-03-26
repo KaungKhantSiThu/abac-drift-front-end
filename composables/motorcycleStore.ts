@@ -58,6 +58,12 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 					useToast().success("Motorcycle removed");
 				});
 		},
-    }
+    },
+
+	getters: {
+		getMotorcycleById: (state) => {
+			return (motorcycleId) => state.motorcycles.find((motorcycle) => motorcycle._id === motorcycleId)
+		}
+	}
 
 })
