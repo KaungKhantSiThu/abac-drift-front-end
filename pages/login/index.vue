@@ -22,6 +22,10 @@ const signUp = async () => {
   console.log('user', user)
   console.log('error', error)
 }
+
+const onSignUp = () => {
+  navigateTo('/login')
+}
 const login = async () => {
   const { error } = await client.auth.signInWithPassword({
     email: email.value,
@@ -71,6 +75,7 @@ onMounted(() => {
       <button
           type="submit"
           class="p-2 font-medium text-white bg-green-500 rounded hover:bg-green-400"
+          @click="onSignUp"
       >
         <span v-if="isSignUp"> Sign up </span>
         <span v-else> Log in </span>

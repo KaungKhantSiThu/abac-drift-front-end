@@ -4,8 +4,10 @@ declare module 'nitropack' {
   interface InternalApi {
     '/api/motorcycles': Awaited<ReturnType<typeof import('../../server/api/motorcycles/index').default>>
     '/api/motorcycles/create': Awaited<ReturnType<typeof import('../../server/api/motorcycles/create.post').default>>
+    '/api/motorcycles/:id': Awaited<ReturnType<typeof import('../../server/api/motorcycles/[id].put').default>> | Awaited<ReturnType<typeof import('../../server/api/motorcycles/[id].delete').default>>
     '/api/appointments': Awaited<ReturnType<typeof import('../../server/api/appointments/index').default>>
     '/api/appointments/create': Awaited<ReturnType<typeof import('../../server/api/appointments/create.post').default>>
+    '/api/appointments/:id': Awaited<ReturnType<typeof import('../../server/api/appointments/[id].put').default>> | Awaited<ReturnType<typeof import('../../server/api/appointments/[id].delete').default>>
     '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
     '/api/_supabase/session': Awaited<ReturnType<typeof import('../../node_modules/@nuxtjs/supabase/dist/runtime/server/api/session').default>>
   }

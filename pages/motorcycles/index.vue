@@ -1,15 +1,19 @@
 <template>
   <div class="min-h-screen">
 		<main class="max-w-5xl px-5 mx-auto pt-7 lg:px-0">
-  <button @click="motorcycleModal.openModal()" class="w-full py-3.5 md:py-2.5 md:w-auto btn shrink-0">
+  <button
+      v-if="user.user_metadata.type === 'seller'"
+      @click="motorcycleModal.openModal()"
+      class="w-full py-3.5 md:py-2.5 md:w-auto btn shrink-0">
     Add Motorcycle
   </button>
   <div class="container">
-    <product-card v-for="motorcycle in motorcycleStore.motorcycles" :motorcycle="motorcycle" />
+    <product-card v-if="user.user_metadata.type === 'buyer'" v-for="motorcycle in motorcycleStore.motorcycles" :motorcycle="motorcycle" />
+    <product-card v-if="user.user_metadata.type === 'seller'" v-for="motorcycle in motorcycleStore.getMotorcycleByEmail(user.email)" :motorcycle="motorcycle" />
   </div>
 
   <ClientOnly>
-  <template #item-actions="book">
+  <template #item-actions="motorcycle">
     <div class="flex space-x-4 text-gray-500">
       <button @click="motorcycleModal.openModal()">
         <Icon size="18" name="fluent:pen-24-regular" />
@@ -45,6 +49,7 @@ const removeMotorcycle = async (motorcycle) => {
 };
 
 const user = useSupabaseUser();
+
 onMounted(() => {
   watchEffect(() => {
     if (!user.value)  {
@@ -52,6 +57,7 @@ onMounted(() => {
     }
   })
 })
+
 
 </script>
 

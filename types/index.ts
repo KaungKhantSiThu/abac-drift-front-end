@@ -7,7 +7,9 @@ export interface IMotorcycle {
 	engine: number,
 	year: Date,
 	manufacturer: string,
-	imageURL: string
+	imageURL: string,
+
+	seller: string
 }
 
 export interface IAppointment {

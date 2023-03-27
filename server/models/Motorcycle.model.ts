@@ -8,9 +8,11 @@ const schema = new Schema(
         gear: String,
         mileage: Number,
         engine: Number,
-        year: Number,
+        year: String,
         manufacturer: String,
-        imageURL: String
+        imageURLs: [String],
+        seller: String,
+        description: String
     }
 );
 

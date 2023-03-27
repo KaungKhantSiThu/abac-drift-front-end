@@ -1,7 +1,7 @@
 <template>
     <div class="card product-card">
       <NuxtLink :to="{ path: `/motorcycles/${motorcycle._id}` }" :key="motorcycle._id">
-      <img :src="motorcycle.imageURL" class="card-img-top" alt="...">
+      <img :src="motorcycle.imageURLs[0]" class="card-img-top" alt="...">
     </NuxtLink>
       <div class="card-body">
         <h5 class="card-title">{{ motorcycle.title }}</h5>

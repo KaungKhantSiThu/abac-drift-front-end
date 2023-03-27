@@ -28,28 +28,37 @@
                             <form @submit="submitMotorcycle" class="mt-5">
                                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                                     <div class="col-span-full">
-                                        <FormInput v-model="motorcycle.title" placeholder="Enter Brand" rules="required"
-                                            label="Motorcycle Brand" type="text" name="title" />
-                                        <FormInput v-model="motorcycle.gear" placeholder="Enter Gear" rules="required"
-                                            label="Motorcycle Gear" type="text" name="gear" />
+                                        <FormInput placeholder="Enter Brand" rules="required"
+                                            label="Brand" type="text" name="title" />
+                                        <FormInput placeholder="Enter Gear" rules="required"
+                                            label="Gear" type="text" name="gear" />
 
-                                        <FormInput v-model="motorcycle.mileage" placeholder="Enter  mileage"
-                                            rules="required" label="Motorcycle  mileage" type="number" name=" mileage" />
-                                        <FormInput v-model="motorcycle.price" placeholder="Enter Price" rules="required"
-                                            label="Motorcycle Price" type="number" name="price" />
+                                        <FormInput placeholder="Enter  mileage"
+                                            rules="required" label="Mileage" type="number" name="mileage" />
+                                        <FormInput placeholder="Enter Price" rules="required"
+                                            label="Price" type="number" name="price"/>
 
-                                        <FormInput v-model="motorcycle.engine" placeholder="Enter Engine" rules="required"
-                                            label="Motorcycle Engine" type="number" name="engine" />
+                                        <FormInput placeholder="Enter Engine" rules="required"
+                                            label="Engine" type="number" name="engine" />
 
-                                        <FormInput v-model="motorcycle.year" placeholder="Enter Year" rules="required"
-                                            label="Motorcycle Year" type="number" name="year" />
+                                        <FormInput placeholder="Enter Year" rules="required"
+                                            label="Year" type="text" name="year" />
 
-                                        <FormInput v-model="motorcycle.manufacturer" placeholder="Enter Manufacturer"
-                                            rules="required" label="Motorcycle Manufacturer" type="string"
+                                        <FormInput placeholder="Enter Manufacturer"
+                                            rules="required" label="Manufacturer" type="text"
                                             name="manufacturer" />
+<!--                                        <FormInput-->
+<!--                                            rules="required"-->
+<!--                                            multiple-->
+<!--                                            accept="image/*"-->
+<!--                                            type="file" name="imageURL" label="Images" />-->
 
-                                        <FormInput v-model="motorcycle.imageURL" action="{Formeezy-Endpoint}" method="POST" enctype="multipart/form-data"
-                                            type="file" name="my-file" label="Motorcycle  Picture" />
+                                      <FormInput placeholder="Enter Description"
+                                                 rules="required" label="Description" type="text"
+                                                 name="description" />
+
+
+                                      <DropFile @bindFiles="handleImageFiles"/>
                                     </div>
                                 </div>
                                 <!-- Form buttons -->
@@ -84,26 +93,49 @@ const motorcycleStore = useMotorcycleStore();
 //Initial form value
 const motorcycle = ref({});
 
+const client = useSupabaseClient();
+
+const user = useSupabaseUser();
+
 // Get function used to handle form submission and set init form values
 const { handleSubmit } = useForm({
     initialValues: motorcycle,
 });
 
+const imageFiles = ref({});
+
+const handleImageFiles = (f) => {
+  imageFiles.value = f
+}
+
 // Function used to update or create the record
 const submitMotorcycle = handleSubmit(async (values, ctx) => {
     if (!motorcycle.value._id) {
-        // create author
-        await motorcycleStore.create(values.title);
-        await motorcycleStore.create(values.gear);
-        await motorcycleStore.create(values.mileage);
-        await motorcycleStore.create(values.price);
-        await motorcycleStore.create(values.engine);
-        await motorcycleStore.create(values.year);
-        await motorcycleStore.create(values.manufacturer);
+        // create motorcycle
+        //console.log(values)
+        let count = 0
+        let imageURLs = []
+        imageFiles.value.forEach((imageFile) => {
+          console.log(imageFile)
+          const { data, error } = client.storage
+              .from('motorcycles')
+              .upload(`${values.title}/image${count}`, imageFile)
+
+          const { data: url} = client.storage
+              .from('motorcycles')
+              .getPublicUrl(`${values.title}/image${count}`)
+          imageURLs.push(url.publicUrl)
+
+          count++;
+
+        })
+        await motorcycleStore.create({...values, imageURLs: imageURLs, seller: user.value.email})
         closeModal();
     } else {
-        // Updated author
-        motorcycleStore.update(motorcycle.value._id, values.title, values.gear, values.mileage, values.price, values.engine, values.year, values.manufacturer);
+        // Updated motorcycle
+        console.log(values)
+        console.log(imageFiles)
+        //await motorcycleStore.update(motorcycle.value._id, values.title, values.gear, values.mileage, values.price, values.engine, values.year, values.manufacturer);
         closeModal();
     }
 });

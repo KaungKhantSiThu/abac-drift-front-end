@@ -7,6 +7,7 @@ import { parentPort, threadId } from 'worker_threads';
 import { provider, isWindows } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
 import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, createError, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
 import mongoose from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/mongoose/index.js';
+import Joi from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/joi/lib/index.js';
 import { createRenderer } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import devalue from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
 import { renderToString } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue/server-renderer/index.mjs';
@@ -415,15 +416,23 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
 
 const _lazy_nbKlNm = () => Promise.resolve().then(function () { return index$3; });
 const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$2; });
+const _lazy_TCh2W6 = () => Promise.resolve().then(function () { return _id__put$3; });
+const _lazy_KZ9ooJ = () => Promise.resolve().then(function () { return _id__delete$3; });
 const _lazy_7daedG = () => Promise.resolve().then(function () { return index$1; });
 const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post; });
+const _lazy_km0c0K = () => Promise.resolve().then(function () { return _id__put$1; });
+const _lazy_r2uBqh = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '/api/motorcycles', handler: _lazy_nbKlNm, lazy: true, middleware: false, method: undefined },
   { route: '/api/motorcycles/create', handler: _lazy_L8Vs0W, lazy: true, middleware: false, method: "post" },
+  { route: '/api/motorcycles/:id', handler: _lazy_TCh2W6, lazy: true, middleware: false, method: "put" },
+  { route: '/api/motorcycles/:id', handler: _lazy_KZ9ooJ, lazy: true, middleware: false, method: "delete" },
   { route: '/api/appointments', handler: _lazy_7daedG, lazy: true, middleware: false, method: undefined },
   { route: '/api/appointments/create', handler: _lazy_sKycXm, lazy: true, middleware: false, method: "post" },
+  { route: '/api/appointments/:id', handler: _lazy_km0c0K, lazy: true, middleware: false, method: "put" },
+  { route: '/api/appointments/:id', handler: _lazy_r2uBqh, lazy: true, middleware: false, method: "delete" },
   { route: '/__nuxt_error', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined },
   { route: '/api/_supabase/session', handler: _Y8xdz0, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined }
@@ -510,9 +519,11 @@ const schema$1 = new Schema$1(
     gear: String,
     mileage: Number,
     engine: Number,
-    year: Number,
+    year: String,
     manufacturer: String,
-    imageURL: String
+    imageURLs: [String],
+    seller: String,
+    description: String
   }
 );
 const MotorcycleModel = mongoose.model("Motorcycle", schema$1, "motorcycles");
@@ -526,8 +537,47 @@ const index$3 = /*#__PURE__*/Object.freeze({
   'default': index$2
 });
 
+Joi.object({
+  name: Joi.string().min(3).required()
+});
+Joi.object({
+  title: Joi.string().min(3).required(),
+  isbn: Joi.string().min(3).required(),
+  authors: Joi.array(),
+  published: Joi.date().required(),
+  pageCount: Joi.number()
+});
+const MotorcycleSchema = Joi.object({
+  title: Joi.string().required(),
+  price: Joi.number().required(),
+  gear: Joi.string().required(),
+  mileage: Joi.number().required(),
+  engine: Joi.number().required(),
+  year: Joi.number().required(),
+  manufacturer: Joi.string().required(),
+  imageURLs: Joi.array().required(),
+  description: Joi.string().required(),
+  seller: Joi.string().required()
+});
+const AppointmentSchema = Joi.object({
+  datetime: Joi.date().required(),
+  seller: Joi.string().required(),
+  buyer: Joi.string().required(),
+  status: Joi.string().required(),
+  location: Joi.string().required(),
+  motorcycle: Joi.object()
+});
+
 const create_post$1 = defineEventHandler(async (event) => {
   const body = await readBody(event);
+  let { error } = MotorcycleSchema.validate(body);
+  if (error) {
+    throw createError({
+      message: error.message.replace(/"/g, ""),
+      statusCode: 400,
+      fatal: false
+    });
+  }
   try {
     await MotorcycleModel.create(body);
   } catch (e) {
@@ -538,6 +588,49 @@ const create_post$1 = defineEventHandler(async (event) => {
 const create_post$2 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': create_post$1
+});
+
+const _id__put$2 = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  const id = event.context.params.id;
+  let { error } = MotorcycleSchema.validate(body, { abortEarly: true, allowUnknown: true });
+  if (error) {
+    throw createError({
+      message: error.message.replace(/"/g, ""),
+      statusCode: 400,
+      fatal: false
+    });
+  }
+  try {
+    await MotorcycleModel.findByIdAndUpdate(id, body);
+    return { message: "Motorcycle updated" };
+  } catch (e) {
+    throw createError({
+      message: e.message
+    });
+  }
+});
+
+const _id__put$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id__put$2
+});
+
+const _id__delete$2 = defineEventHandler(async (event) => {
+  const id = event.context.params.id;
+  try {
+    await MotorcycleModel.findByIdAndDelete(id);
+    return { message: "Motorcycle removed" };
+  } catch (e) {
+    throw createError({
+      message: e.message
+    });
+  }
+});
+
+const _id__delete$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id__delete$2
 });
 
 const { Schema } = mongoose;
@@ -567,6 +660,49 @@ const index$1 = /*#__PURE__*/Object.freeze({
 
 const create_post = /*#__PURE__*/Object.freeze({
   __proto__: null
+});
+
+const _id__put = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  const id = event.context.params.id;
+  let { error } = AppointmentSchema.validate(body, { abortEarly: true, allowUnknown: true });
+  if (error) {
+    throw createError({
+      message: error.message.replace(/"/g, ""),
+      statusCode: 400,
+      fatal: false
+    });
+  }
+  try {
+    await AppointmentModel.findByIdAndUpdate(id, body);
+    return { message: "Appointment updated" };
+  } catch (e) {
+    throw createError({
+      message: e.message
+    });
+  }
+});
+
+const _id__put$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id__put
+});
+
+const _id__delete = defineEventHandler(async (event) => {
+  const id = event.context.params.id;
+  try {
+    await AppointmentModel.findByIdAndDelete(id);
+    return { message: "Appointment removed" };
+  } catch (e) {
+    throw createError({
+      message: e.message
+    });
+  }
+});
+
+const _id__delete$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id__delete
 });
 
 function buildAssetsURL(...path) {

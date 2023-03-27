@@ -18,10 +18,10 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
             }
         },
         // Create a new motorcycle
-        async create(motorcycles: IMotorcycle) {
+        async create(motorcycle: IMotorcycle) {
 			await $fetch("/api/motorcycles/create", {
 				method: "POST",
-				body: motorcycles,
+				body: motorcycle,
 			})
 				.catch((e) => {
 					useToast().error(e.data.message);
@@ -32,10 +32,10 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 				});
 		},
         // Update motorcycle information
-		async update(id: string, motorcycles: IMotorcycle) {
+		async update(id: string, motorcycle: IMotorcycle) {
 			await $fetch(`/api/motorcycles/${id}`, {
 				method: "PUT",
-				body: motorcycles,
+				body: motorcycle,
 			})
 				.catch((e) => {
 					useToast().error(e.data.message);
@@ -63,6 +63,10 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 	getters: {
 		getMotorcycleById: (state) => {
 			return (motorcycleId) => state.motorcycles.find((motorcycle) => motorcycle._id === motorcycleId)
+		},
+
+		getMotorcycleByEmail: (state) => {
+			return (email) => state.motorcycles.filter((motorcycle) => motorcycle.seller === email)
 		}
 	}
 
