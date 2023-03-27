@@ -17,7 +17,7 @@
 		label: String,
 		name: String,
 		rules: String,
-		modelValue: [String, Number],
+		modelValue: [String, Number, Date],
 	});
 
 	// Get value and errorMessage to use in template

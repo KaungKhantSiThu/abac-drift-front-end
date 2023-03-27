@@ -2,6 +2,7 @@
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'AppointmentCard': typeof import("../components/AppointmentCard.vue")['default']
+    'AppointmentModal': typeof import("../components/AppointmentModal.vue")['default']
     'AuthorModal': typeof import("../components/AuthorModal.vue")['default']
     'BookModal': typeof import("../components/BookModal.vue")['default']
     'DropFile': typeof import("../components/DropFile.vue")['default']
@@ -20,6 +21,7 @@ declare module '@vue/runtime-core' {
     'NuxtLoadingIndicator': typeof import("../node_modules/nuxt/dist/app/components/nuxt-loading-indicator")['default']
     'Icon': typeof import("../node_modules/nuxt-icon/dist/runtime/Icon.vue")['default']
     'LazyAppointmentCard': typeof import("../components/AppointmentCard.vue")['default']
+    'LazyAppointmentModal': typeof import("../components/AppointmentModal.vue")['default']
     'LazyAuthorModal': typeof import("../components/AuthorModal.vue")['default']
     'LazyBookModal': typeof import("../components/BookModal.vue")['default']
     'LazyDropFile': typeof import("../components/DropFile.vue")['default']
@@ -41,6 +43,7 @@ declare module '@vue/runtime-core' {
 }
 
 export const AppointmentCard: typeof import("../components/AppointmentCard.vue")['default']
+export const AppointmentModal: typeof import("../components/AppointmentModal.vue")['default']
 export const AuthorModal: typeof import("../components/AuthorModal.vue")['default']
 export const BookModal: typeof import("../components/BookModal.vue")['default']
 export const DropFile: typeof import("../components/DropFile.vue")['default']
@@ -59,6 +62,7 @@ export const NuxtLink: typeof import("../node_modules/nuxt/dist/app/components/n
 export const NuxtLoadingIndicator: typeof import("../node_modules/nuxt/dist/app/components/nuxt-loading-indicator")['default']
 export const Icon: typeof import("../node_modules/nuxt-icon/dist/runtime/Icon.vue")['default']
 export const LazyAppointmentCard: typeof import("../components/AppointmentCard.vue")['default']
+export const LazyAppointmentModal: typeof import("../components/AppointmentModal.vue")['default']
 export const LazyAuthorModal: typeof import("../components/AuthorModal.vue")['default']
 export const LazyBookModal: typeof import("../components/BookModal.vue")['default']
 export const LazyDropFile: typeof import("../components/DropFile.vue")['default']

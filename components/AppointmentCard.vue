@@ -5,38 +5,38 @@
         <div class="row my-3 text-center">
           <div class="col">
             <h5 class="card-text">Date</h5>
-            <p class="fs-5">{{ event.date }}</p>
+            <p class="fs-5">{{ event.datetime.toString() }}</p>
           </div>
           <div class="col">
             <h5 class="card-text">Time</h5>
-            <p class="fs-5">{{ event.time }}</p>
+            <p class="fs-5">{{ event.datetime.toString() }}</p>
           </div>
           <div class="col">
             <h5 class="card-text">Client</h5>
-            <p class="fs-5">{{ event.clientName }}</p>
+            <p class="fs-5">{{ event.buyer }}</p>
           </div>
         </div>
 
 
         <div class="row">
           <div class="col-4">
-            <img class="card-img-top" :src="event.car.imageURL" alt="Card image cap">
+            <img class="card-img-top" :src="event.motorcycle.imageURLs[0]" alt="Card image cap">
           </div>
           <div class="col">
             <h4>Toyota GR Supra</h4>
-            <h5 class="text-muted">{{ event.car.title }}</h5>
+            <h5 class="text-muted">{{ event.motorcycle.title }}</h5>
             <div class="row my-3 text-center">
               <div class="col">
                 <h5 class="card-text">Year</h5>
-                <p class="fs-5">{{ event.car.year }}</p>
+                <p class="fs-5">{{ event.motorcycle.year }}</p>
               </div>
               <div class="col">
                 <h5 class="card-text">Engine</h5>
-                <p class="fs-5">{{ event.car.engine }}</p>
+                <p class="fs-5">{{ event.motorcycle.engine }}</p>
               </div>
               <div class="col">
                 <h5 class="card-text">Price</h5>
-                <p class="fs-5">{{ event.car.price }}</p>
+                <p class="fs-5">{{ event.motorcycle.price }}</p>
               </div>
             </div>
             <div class="row text-end">

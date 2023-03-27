@@ -84,21 +84,55 @@
           </p>
         </div>
         <hr>
-        <button class="btn btn-primary" type="button"><i
-            class="fa-solid fa-calendar-check"></i>Book an appointment</button>
+        <div>
+          <p class="fs-5 fw-bold">Make an appointment with the seller</p>
+          <form @submit="submitAppointment">
+            <FormInput
+                       rules="required" label="Date" type="date"
+                       name="date" />
+
+            <FormInput
+                rules="required" label="Time" type="time"
+                name="time" />
+
+            <FormInput
+                rules="required" label="Location" type="text"
+                name="location" />
+
+            <FormInput
+                rules="required" label="Note" type="text"
+                name="note" />
+
+            <button type="submit" class="btn btn-primary" >Book an appointment</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
+8
 <script setup lang="ts">
-import MotorcycleDetails from "~/components/MotorcycleDetails.vue";
 import {useMotorcycleStore} from "~/composables/motorcycleStore";
+import { useForm } from "vee-validate"
 
+const user = useSupabaseUser();
 const motorcycleStore = useMotorcycleStore();
-
+const appointmentStore = useAppointmentStore();
+const appointment = ref({});
 const id  = useRoute().params.id;
 const motorcycle = motorcycleStore.getMotorcycleById(id);
+
+const { handleSubmit } = useForm({
+  initialValues: appointment,
+})
+const submitAppointment = handleSubmit(async (values, ctx) => {
+  const appointmentObject = {...values, motorcycle: motorcycle, seller: motorcycle.seller, buyer: user.value.email, status: "upcoming"}
+  appointmentObject['datetime'] = new Date(appointmentObject['date'] + ' ' + appointmentObject['time']);
+  delete appointmentObject['date']
+  delete appointmentObject['time']
+  await appointmentStore.create(appointmentObject)
+  console.log(appointmentObject)
+})
 
 </script>
 

@@ -24,7 +24,7 @@
                   }} Motorcycle</DialogTitle>
               </div>
               <p class="mt-1 text-sm text-gray-500">
-                {{ appointment._id ? "Update this motorcycle" : "Add a new motorcycle here" }}
+                {{ appointment._id ? "Update this appointment" : "Add a new appointment here" }}
               </p>
 
               <form @submit="submitAppointment" class="mt-5">
@@ -60,7 +60,6 @@
                                name="description" />
 
 
-                    <DropFile @bindFiles="handleImageFiles"/>
                   </div>
                 </div>
                 <!-- Form buttons -->
@@ -117,7 +116,7 @@ const submitAppointment = handleSubmit(async (values, ctx) => {
     await appointmentStore.create({...values, buyer: user.value.email})
     closeModal();
   } else {
-    // Updated motorcycle
+    // 8Updated motorcycle
     console.log(values)
     console.log(imageFiles)
     //await motorcycleStore.update(motorcycle.value._id, values.title, values.gear, values.mileage, values.price, values.engine, values.year, values.manufacturer);

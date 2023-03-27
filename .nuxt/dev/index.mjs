@@ -415,11 +415,11 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
 });
 
 const _lazy_nbKlNm = () => Promise.resolve().then(function () { return index$3; });
-const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$2; });
+const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$3; });
 const _lazy_TCh2W6 = () => Promise.resolve().then(function () { return _id__put$3; });
 const _lazy_KZ9ooJ = () => Promise.resolve().then(function () { return _id__delete$3; });
 const _lazy_7daedG = () => Promise.resolve().then(function () { return index$1; });
-const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post; });
+const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post$1; });
 const _lazy_km0c0K = () => Promise.resolve().then(function () { return _id__put$1; });
 const _lazy_r2uBqh = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
@@ -537,16 +537,6 @@ const index$3 = /*#__PURE__*/Object.freeze({
   'default': index$2
 });
 
-Joi.object({
-  name: Joi.string().min(3).required()
-});
-Joi.object({
-  title: Joi.string().min(3).required(),
-  isbn: Joi.string().min(3).required(),
-  authors: Joi.array(),
-  published: Joi.date().required(),
-  pageCount: Joi.number()
-});
 const MotorcycleSchema = Joi.object({
   title: Joi.string().required(),
   price: Joi.number().required(),
@@ -565,10 +555,11 @@ const AppointmentSchema = Joi.object({
   buyer: Joi.string().required(),
   status: Joi.string().required(),
   location: Joi.string().required(),
-  motorcycle: Joi.object()
+  motorcycle: Joi.object().required(),
+  note: Joi.string().required()
 });
 
-const create_post$1 = defineEventHandler(async (event) => {
+const create_post$2 = defineEventHandler(async (event) => {
   const body = await readBody(event);
   let { error } = MotorcycleSchema.validate(body);
   if (error) {
@@ -585,9 +576,9 @@ const create_post$1 = defineEventHandler(async (event) => {
   }
 });
 
-const create_post$2 = /*#__PURE__*/Object.freeze({
+const create_post$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  'default': create_post$1
+  'default': create_post$2
 });
 
 const _id__put$2 = defineEventHandler(async (event) => {
@@ -641,6 +632,7 @@ const schema = new Schema(
     buyer: String,
     status: String,
     location: String,
+    note: String,
     motorcycle: {
       type: Schema.Types.ObjectId,
       ref: "Motorcycle"
@@ -658,8 +650,26 @@ const index$1 = /*#__PURE__*/Object.freeze({
   'default': index
 });
 
-const create_post = /*#__PURE__*/Object.freeze({
-  __proto__: null
+const create_post = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  let { error } = AppointmentSchema.validate(body);
+  if (error) {
+    throw createError({
+      message: error.message.replace(/"/g, ""),
+      statusCode: 400,
+      fatal: false
+    });
+  }
+  try {
+    await AppointmentModel.create(body);
+  } catch (e) {
+    throw createError({ message: e.message });
+  }
+});
+
+const create_post$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': create_post
 });
 
 const _id__put = defineEventHandler(async (event) => {

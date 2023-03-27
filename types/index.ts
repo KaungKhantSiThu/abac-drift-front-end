@@ -8,7 +8,6 @@ export interface IMotorcycle {
 	year: Date,
 	manufacturer: string,
 	imageURL: string,
-
 	seller: string
 }
 
@@ -19,5 +18,6 @@ export interface IAppointment {
 	buyer: string,
 	status: string,
 	location: string,
-	motorcycle: IMotorcycle
+	motorcycle: IMotorcycle,
+	note: string
 }

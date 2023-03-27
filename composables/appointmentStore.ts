@@ -19,7 +19,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
                 useToast().error(e.message);
             }
         },
-        // Create a new motorcycle
+        // Create a new appointment
         async create(appointment: IAppointment) {
             await $fetch("/api/appointments/create", {
                 method: "POST",
@@ -33,7 +33,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
                     useToast().success("Appointment added");
                 });
         },
-        // Update motorcycle information
+        // Update appointment information
         async update(id: string, appointment: IAppointment) {
             await $fetch(`/api/appointments/${id}`, {
                 method: "PUT",
@@ -47,7 +47,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
                     useToast().success("Appointment updated");
                 });
         },
-        // delete a motorcycle
+        // delete an appointment
         async remove(id: string) {
             await $fetch(`/api/appointments/${id}`, {
                 method: "DELETE",

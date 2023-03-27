@@ -8,6 +8,7 @@ const schema = new Schema(
         buyer: String,
         status: String,
         location: String,
+        note: String,
         motorcycle: {
             type: Schema.Types.ObjectId,
             ref: 'Motorcycle'
