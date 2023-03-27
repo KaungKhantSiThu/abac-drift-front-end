@@ -642,7 +642,7 @@ const schema = new Schema(
 const AppointmentModel = mongoose.model("Appointment", schema, "appointments");
 
 const index = defineEventHandler(async (event) => {
-  return AppointmentModel.find().populate("motorcycle");
+  return AppointmentModel.find();
 });
 
 const index$1 = /*#__PURE__*/Object.freeze({
