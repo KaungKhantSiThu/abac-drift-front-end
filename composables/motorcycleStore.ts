@@ -17,6 +17,15 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
                 useToast().error(e.message);
             }
         },
+
+		async getById(id: string) {
+			try {
+				let data = await $fetch<IMotorcycle>(`/api/motorcycles/${id}`);
+				return data as IMotorcycle;
+			} catch (e) {
+				useToast().error(e.message);
+			}
+		},
         // Create a new motorcycle
         async create(motorcycle: IMotorcycle) {
 			await $fetch("/api/motorcycles/create", {
@@ -61,10 +70,6 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
     },
 
 	getters: {
-		getMotorcycleById: (state) => {
-			return (motorcycleId) => state.motorcycles.find((motorcycle) => motorcycle._id === motorcycleId)
-		},
-
 		getMotorcycleByEmail: (state) => {
 			return (email) => state.motorcycles.filter((motorcycle) => motorcycle.seller === email)
 		}

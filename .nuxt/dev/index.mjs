@@ -416,10 +416,12 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
 
 const _lazy_nbKlNm = () => Promise.resolve().then(function () { return index$3; });
 const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$3; });
+const _lazy_EJgFSC = () => Promise.resolve().then(function () { return _id_$3; });
 const _lazy_TCh2W6 = () => Promise.resolve().then(function () { return _id__put$3; });
 const _lazy_KZ9ooJ = () => Promise.resolve().then(function () { return _id__delete$3; });
 const _lazy_7daedG = () => Promise.resolve().then(function () { return index$1; });
 const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post$1; });
+const _lazy_FgHqD4 = () => Promise.resolve().then(function () { return _id_$1; });
 const _lazy_km0c0K = () => Promise.resolve().then(function () { return _id__put$1; });
 const _lazy_r2uBqh = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
@@ -427,10 +429,12 @@ const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$
 const handlers = [
   { route: '/api/motorcycles', handler: _lazy_nbKlNm, lazy: true, middleware: false, method: undefined },
   { route: '/api/motorcycles/create', handler: _lazy_L8Vs0W, lazy: true, middleware: false, method: "post" },
+  { route: '/api/motorcycles/:id', handler: _lazy_EJgFSC, lazy: true, middleware: false, method: undefined },
   { route: '/api/motorcycles/:id', handler: _lazy_TCh2W6, lazy: true, middleware: false, method: "put" },
   { route: '/api/motorcycles/:id', handler: _lazy_KZ9ooJ, lazy: true, middleware: false, method: "delete" },
   { route: '/api/appointments', handler: _lazy_7daedG, lazy: true, middleware: false, method: undefined },
   { route: '/api/appointments/create', handler: _lazy_sKycXm, lazy: true, middleware: false, method: "post" },
+  { route: '/api/appointments/:id', handler: _lazy_FgHqD4, lazy: true, middleware: false, method: undefined },
   { route: '/api/appointments/:id', handler: _lazy_km0c0K, lazy: true, middleware: false, method: "put" },
   { route: '/api/appointments/:id', handler: _lazy_r2uBqh, lazy: true, middleware: false, method: "delete" },
   { route: '/__nuxt_error', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined },
@@ -581,6 +585,16 @@ const create_post$3 = /*#__PURE__*/Object.freeze({
   'default': create_post$2
 });
 
+const _id_$2 = defineEventHandler(async (event) => {
+  const { id } = event.context.params;
+  return MotorcycleModel.findById(id).exec();
+});
+
+const _id_$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id_$2
+});
+
 const _id__put$2 = defineEventHandler(async (event) => {
   const body = await readBody(event);
   const id = event.context.params.id;
@@ -607,23 +621,6 @@ const _id__put$3 = /*#__PURE__*/Object.freeze({
   'default': _id__put$2
 });
 
-const _id__delete$2 = defineEventHandler(async (event) => {
-  const id = event.context.params.id;
-  try {
-    await MotorcycleModel.findByIdAndDelete(id);
-    return { message: "Motorcycle removed" };
-  } catch (e) {
-    throw createError({
-      message: e.message
-    });
-  }
-});
-
-const _id__delete$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id__delete$2
-});
-
 const { Schema } = mongoose;
 const schema = new Schema(
   {
@@ -640,6 +637,24 @@ const schema = new Schema(
   }
 );
 const AppointmentModel = mongoose.model("Appointment", schema, "appointments");
+
+const _id__delete$2 = defineEventHandler(async (event) => {
+  const id = event.context.params.id;
+  try {
+    await MotorcycleModel.findByIdAndDelete(id);
+    await AppointmentModel.deleteMany({ motorcycle: id });
+    return { message: "Motorcycle removed" };
+  } catch (e) {
+    throw createError({
+      message: e.message
+    });
+  }
+});
+
+const _id__delete$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id__delete$2
+});
 
 const index = defineEventHandler(async (event) => {
   return AppointmentModel.find().populate("motorcycle");
@@ -670,6 +685,16 @@ const create_post = defineEventHandler(async (event) => {
 const create_post$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': create_post
+});
+
+const _id_ = defineEventHandler(async (event) => {
+  const { id } = event.context.params;
+  return AppointmentModel.findById(id).populate("motorcycle").exec();
+});
+
+const _id_$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id_
 });
 
 const _id__put = defineEventHandler(async (event) => {

@@ -2,6 +2,14 @@
   <div class="container mt-4">
     <div class="row">
       <NuxtLink to="/motorcycles">Back</NuxtLink>
+      <div class="flex space-x-4 text-gray-500">
+        <button @click="motorcycleModal.openModal(motorcycle)">
+          <Icon size="18" name="fluent:pen-24-regular" />
+        </button>
+        <button @click="removeMotorcycle(motorcycle)">
+          <Icon size="18" name="fluent:delete-24-regular" />
+        </button>
+      </div>
     </div>
     <div class="row">
       <div class="col-7">
@@ -49,10 +57,6 @@
               <h5>Mileage</h5>
               <p>{{ motorcycle.mileage }}</p>
             </div>
-            <div class="col text-center">
-              <h5>Gearbox</h5>
-              <p>{{ motorcycle.gear }}</p>
-            </div>
           </div>
           <hr>
           <div class="row">
@@ -61,8 +65,8 @@
               <p>{{ motorcycle.engine }}</p>
             </div>
             <div class="col text-center">
-              <h5>Fuel Type</h5>
-              <p>{{ motorcycle.fuelType }}</p>
+              <h5>Gearbox</h5>
+              <p>{{ motorcycle.gear }}</p>
             </div>
           </div>
         </div>
@@ -108,6 +112,9 @@
         </div>
       </div>
     </div>
+
+    <MotorcycleModal ref="motorcycleModal" />
+
   </div>
 </template>
 8
@@ -119,8 +126,10 @@ const user = useSupabaseUser();
 const motorcycleStore = useMotorcycleStore();
 const appointmentStore = useAppointmentStore();
 const appointment = ref({});
-const id  = useRoute().params.id;
-const motorcycle = motorcycleStore.getMotorcycleById(id);
+
+const id  = useRoute().params.id as string;
+
+const motorcycle = await motorcycleStore.getById(id);
 
 const { handleSubmit } = useForm({
   initialValues: appointment,
@@ -133,6 +142,12 @@ const submitAppointment = handleSubmit(async (values, ctx) => {
   await appointmentStore.create(appointmentObject)
   console.log(appointmentObject)
 })
+
+const motorcycleModal = ref();
+
+const removeMotorcycle = async (motorcycle) => {
+  await motorcycleStore.remove(motorcycle._id)
+}
 
 </script>
 

@@ -5,11 +5,11 @@
         <div class="row my-3 text-center">
           <div class="col">
             <h5 class="card-text">Date</h5>
-            <p class="fs-5">{{ event.datetime.toString() }}</p>
+            <p class="fs-5">{{ new Date(event.datetime).toDateString() }}</p>
           </div>
           <div class="col">
             <h5 class="card-text">Time</h5>
-            <p class="fs-5">{{ event.datetime.toString() }}</p>
+            <p class="fs-5">{{ new Date(event.datetime).getHours() + ':' + new Date(event.datetime).getMinutes() }}</p>
           </div>
           <div class="col">
             <h5 class="card-text">Client</h5>
@@ -44,7 +44,9 @@
 
               </div>
               <div class="col-2">
-                <button type="button" class="btn p" onclick="console.log('tapped!')">View <span><i class="fa-solid fa-arrow-right"></i></span></button>
+                <NuxtLink :to="{ path: `/appointments/${event._id}` }" :key="event._id">
+                <button type="button" class="btn p">View <span><i class="fa-solid fa-arrow-right"></i></span></button>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -56,12 +58,14 @@
 </template>
 
 <script setup>
-const props = defineProps({
+
+defineProps({
   event: {
     type: Object,
     required: true
   }
 })
+
 </script>
 
 <style scoped>

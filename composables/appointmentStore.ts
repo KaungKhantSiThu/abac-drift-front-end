@@ -1,8 +1,6 @@
 import { defineStore } from "pinia";
-import {IAppointment} from "~~/types";
+import { IAppointment } from "~~/types";
 import useToast from "./useToast";
-import motorcycles from "~/server/api/motorcycles";
-import appointments from "~/server/api/appointments";
 
 export const useAppointmentStore = defineStore("appointment-store", {
     state: () => ({
@@ -19,6 +17,16 @@ export const useAppointmentStore = defineStore("appointment-store", {
                 useToast().error(e.message);
             }
         },
+
+        async getById(id: string) {
+            try {
+                let data = await $fetch<IAppointment>(`/api/appointments/${id}`);
+                return data as IAppointment;
+            } catch (e) {
+                useToast().error(e.message);
+            }
+        },
+
         // Create a new appointment
         async create(appointment: IAppointment) {
             await $fetch("/api/appointments/create", {

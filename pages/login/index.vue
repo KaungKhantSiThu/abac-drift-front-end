@@ -6,6 +6,8 @@
 const email = ref('')
 const password = ref('')
 const type = ref('')
+const name = ref('')
+const phoneNumber = ref('')
 const isSignUp = ref(false)
 const user = useSupabaseUser()
 const client = useSupabaseAuthClient()
@@ -52,16 +54,34 @@ onMounted(() => {
         @submit.prevent="() => (isSignUp ? signUp() : login())"
         class="flex flex-col gap-2 mt-16"
     >
+
+      <input
+          v-if="isSignUp"
+          type="text"
+          placeholder="Name"
+          v-model="name"
+          class="p-2 text-black rounded bg-charcoal-600"
+      />
+
       <input
           type="email"
           placeholder="Email"
           v-model="email"
           class="p-2 text-black rounded bg-charcoal-600"
       />
+
       <input
           type="password"
           placeholder="Password"
           v-model="password"
+          class="p-2 text-black rounded bg-charcoal-600"
+      />
+
+      <input
+          v-if="isSignUp"
+          type="tel"
+          placeholder="Phone Number"
+          v-model="phoneNumber"
           class="p-2 text-black rounded bg-charcoal-600"
       />
 

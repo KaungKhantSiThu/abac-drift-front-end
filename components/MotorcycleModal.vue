@@ -58,7 +58,7 @@
                                                  name="description" />
 
 
-                                      <DropFile @bindFiles="handleImageFiles"/>
+                                      <DropFile v-if="motorcycle._id === undefined" @bindFiles="handleImageFiles"/>
                                     </div>
                                 </div>
                                 <!-- Form buttons -->
@@ -134,17 +134,21 @@ const submitMotorcycle = handleSubmit(async (values, ctx) => {
     } else {
         // Updated motorcycle
         console.log(values)
-        console.log(imageFiles)
-        //await motorcycleStore.update(motorcycle.value._id, values.title, values.gear, values.mileage, values.price, values.engine, values.year, values.manufacturer);
+        await motorcycleStore.update(motorcycle.value._id, {...values, imageURLs: motorcycle.value.imageURLs, seller: motorcycle.value.seller});
         closeModal();
+        this.$nuxt.refresh();
     }
 });
 
 // Control open/close state of modal
 const open = ref(false);
 const openModal = (item) => {
+  console.log('testing update modal')
+    console.log(item)
     // Set init values if an object is passed
-    if (item) motorcycle.value = JSON.parse(JSON.stringify(item));
+    if (item) {
+      motorcycle.value = JSON.parse(JSON.stringify(item));
+    }
     open.value = true;
 };
 const closeModal = () => {

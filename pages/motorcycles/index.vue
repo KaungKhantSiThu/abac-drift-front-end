@@ -7,23 +7,11 @@
       class="w-full py-3.5 md:py-2.5 md:w-auto btn shrink-0">
     Add Motorcycle
   </button>
-  <div class="container">
+      <h3 v-if="user.user_metadata.type === 'seller' && motorcycleStore.getMotorcycleByEmail(user.email) === undefined || motorcycleStore.getMotorcycleByEmail(user.email).length === 0">You can start by listing your motorcycle here</h3>
+      <div class="container">
     <product-card v-if="user.user_metadata.type === 'buyer'" v-for="motorcycle in motorcycleStore.motorcycles" :motorcycle="motorcycle" />
     <product-card v-if="user.user_metadata.type === 'seller'" v-for="motorcycle in motorcycleStore.getMotorcycleByEmail(user.email)" :motorcycle="motorcycle" />
   </div>
-
-  <ClientOnly>
-  <template #item-actions="motorcycle">
-    <div class="flex space-x-4 text-gray-500">
-      <button @click="motorcycleModal.openModal()">
-        <Icon size="18" name="fluent:pen-24-regular" />
-      </button>
-      <button @click="removeMotorcycle(motorcycle)">
-        <Icon size="18" name="fluent:delete-24-regular" />
-      </button>
-    </div>
-    </template>
-    </ClientOnly>
   </main>
   
   <MotorcycleModal ref="motorcycleModal" />
@@ -43,10 +31,8 @@ const motorcycleStore = useMotorcycleStore();
 useAsyncData(async () => await motorcycleStore.getAll(), {
   initialCache: false,
 });
+
 const motorcycleModal = ref();
-const removeMotorcycle = async (motorcycle) => {
-  await motorcycleStore.remove(motorcycle._id);
-};
 
 const user = useSupabaseUser();
 
