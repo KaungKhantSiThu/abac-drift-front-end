@@ -88,7 +88,7 @@
           </p>
         </div>
         <hr>
-        <div>
+        <div v-if="currentUser.type === 'buyer'">
           <p class="fs-5 fw-bold">Make an appointment with the seller</p>
           <form @submit="submitAppointment">
             <FormInput
@@ -97,7 +97,7 @@
 
             <FormInput
                 rules="required" label="Time" type="time"
-                name="time" />
+                name="time" min="9:00" max="21:00"/>
 
             <FormInput
                 rules="required" label="Location" type="text"
@@ -121,8 +121,13 @@
 <script setup lang="ts">
 import {useMotorcycleStore} from "~/composables/motorcycleStore";
 import { useForm } from "vee-validate"
+import {useUserStore} from "~/composables/userStore";
 
 const user = useSupabaseUser();
+
+const userStore = useUserStore();
+const currentUser = await userStore.getByEmail(user.value.email)
+
 const motorcycleStore = useMotorcycleStore();
 const appointmentStore = useAppointmentStore();
 const appointment = ref({});

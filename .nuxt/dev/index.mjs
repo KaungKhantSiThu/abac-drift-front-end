@@ -414,6 +414,10 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
   return "auth cookie set";
 });
 
+const _lazy_YfqoE3 = () => Promise.resolve().then(function () { return index$5; });
+const _lazy_BTXXuA = () => Promise.resolve().then(function () { return create_post$5; });
+const _lazy_t4OWAu = () => Promise.resolve().then(function () { return _id_$5; });
+const _lazy_uK7Lgg = () => Promise.resolve().then(function () { return _email_$1; });
 const _lazy_nbKlNm = () => Promise.resolve().then(function () { return index$3; });
 const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$3; });
 const _lazy_EJgFSC = () => Promise.resolve().then(function () { return _id_$3; });
@@ -427,6 +431,10 @@ const _lazy_r2uBqh = () => Promise.resolve().then(function () { return _id__dele
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '/api/users', handler: _lazy_YfqoE3, lazy: true, middleware: false, method: undefined },
+  { route: '/api/users/create', handler: _lazy_BTXXuA, lazy: true, middleware: false, method: "post" },
+  { route: '/api/users/:id', handler: _lazy_t4OWAu, lazy: true, middleware: false, method: undefined },
+  { route: '/api/users/:email', handler: _lazy_uK7Lgg, lazy: true, middleware: false, method: undefined },
   { route: '/api/motorcycles', handler: _lazy_nbKlNm, lazy: true, middleware: false, method: undefined },
   { route: '/api/motorcycles/create', handler: _lazy_L8Vs0W, lazy: true, middleware: false, method: "post" },
   { route: '/api/motorcycles/:id', handler: _lazy_EJgFSC, lazy: true, middleware: false, method: undefined },
@@ -515,6 +523,107 @@ server.listen(listenAddress, () => {
   process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException]", err));
 }
 
+const { Schema: Schema$2 } = mongoose;
+const schema$2 = new Schema$2(
+  {
+    username: String,
+    email: String,
+    bio: String,
+    phoneNumber: String,
+    dob: Date,
+    type: {
+      type: String,
+      enum: ["buyer", "seller"],
+      default: "buyer"
+    },
+    appointments: [String]
+  },
+  { timestamps: true }
+);
+const UserModel = mongoose.model("User", schema$2, "users");
+
+const index$4 = defineEventHandler(async (event) => {
+  return UserModel.find();
+});
+
+const index$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': index$4
+});
+
+const MotorcycleSchema = Joi.object({
+  title: Joi.string().required(),
+  price: Joi.number().required(),
+  gear: Joi.string().required(),
+  mileage: Joi.number().required(),
+  engine: Joi.number().required(),
+  year: Joi.number().required(),
+  manufacturer: Joi.string().required(),
+  imageURLs: Joi.array().required(),
+  description: Joi.string().required(),
+  seller: Joi.string().required()
+});
+const AppointmentSchema = Joi.object({
+  datetime: Joi.date().required(),
+  seller: Joi.string().required(),
+  buyer: Joi.string().required(),
+  status: Joi.string().required(),
+  location: Joi.string().required(),
+  motorcycle: Joi.object().required(),
+  note: Joi.string().required()
+});
+const UserSchema = Joi.object({
+  username: Joi.string().required(),
+  email: Joi.string().required(),
+  bio: Joi.string(),
+  dob: Joi.date().required(),
+  type: Joi.string().valid("buyer", "seller").required(),
+  appointments: Joi.array(),
+  phoneNumber: Joi.string().required()
+});
+
+const create_post$4 = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  let { error } = UserSchema.validate(body);
+  if (error) {
+    throw createError({
+      message: error.message.replace(/"/g, ""),
+      statusCode: 400,
+      fatal: false
+    });
+  }
+  try {
+    await UserModel.create(body);
+  } catch (e) {
+    throw createError({ message: e.message });
+  }
+});
+
+const create_post$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': create_post$4
+});
+
+const _id_$4 = defineEventHandler(async (event) => {
+  const { id } = event.context.params;
+  return UserModel.findById(id).exec();
+});
+
+const _id_$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _id_$4
+});
+
+const _email_ = defineEventHandler(async (event) => {
+  const { email } = event.context.params;
+  return UserModel.findOne({ email }).exec();
+});
+
+const _email_$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': _email_
+});
+
 const { Schema: Schema$1 } = mongoose;
 const schema$1 = new Schema$1(
   {
@@ -539,28 +648,6 @@ const index$2 = defineEventHandler(async (event) => {
 const index$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': index$2
-});
-
-const MotorcycleSchema = Joi.object({
-  title: Joi.string().required(),
-  price: Joi.number().required(),
-  gear: Joi.string().required(),
-  mileage: Joi.number().required(),
-  engine: Joi.number().required(),
-  year: Joi.number().required(),
-  manufacturer: Joi.string().required(),
-  imageURLs: Joi.array().required(),
-  description: Joi.string().required(),
-  seller: Joi.string().required()
-});
-const AppointmentSchema = Joi.object({
-  datetime: Joi.date().required(),
-  seller: Joi.string().required(),
-  buyer: Joi.string().required(),
-  status: Joi.string().required(),
-  location: Joi.string().required(),
-  motorcycle: Joi.object().required(),
-  note: Joi.string().required()
 });
 
 const create_post$2 = defineEventHandler(async (event) => {

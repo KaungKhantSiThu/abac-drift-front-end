@@ -2,6 +2,10 @@
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
+    '/api/users': Awaited<ReturnType<typeof import('../../server/api/users/index').default>>
+    '/api/users/create': Awaited<ReturnType<typeof import('../../server/api/users/create.post').default>>
+    '/api/users/:id': Awaited<ReturnType<typeof import('../../server/api/users/[id]').default>>
+    '/api/users/:email': Awaited<ReturnType<typeof import('../../server/api/users/[email]').default>>
     '/api/motorcycles': Awaited<ReturnType<typeof import('../../server/api/motorcycles/index').default>>
     '/api/motorcycles/create': Awaited<ReturnType<typeof import('../../server/api/motorcycles/create.post').default>>
     '/api/motorcycles/:id': Awaited<ReturnType<typeof import('../../server/api/motorcycles/[id]').default>> | Awaited<ReturnType<typeof import('../../server/api/motorcycles/[id].put').default>> | Awaited<ReturnType<typeof import('../../server/api/motorcycles/[id].delete').default>>

@@ -49,9 +49,17 @@
 
 <script setup lang="ts">
 
+import {useUserStore} from "~/composables/userStore";
+
 const appointmentStore = useAppointmentStore();
 const id = useRoute().params.id as string;
 
 const appointment = await appointmentStore.getById(id);
+
+const user = useSupabaseUser();
+
+const userStore = useUserStore();
+const currentUser = await userStore.getByEmail(user.value.email)
+
 
 </script>

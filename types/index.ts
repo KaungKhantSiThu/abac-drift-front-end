@@ -21,3 +21,14 @@ export interface IAppointment {
 	motorcycle: IMotorcycle,
 	note: string
 }
+
+export interface IUser {
+	_id?: string,
+	username: string,
+	email: string,
+	bio: string,
+	dob: string,
+	type: string,
+	phoneNumber: string,
+	appointments?: [string],
+}

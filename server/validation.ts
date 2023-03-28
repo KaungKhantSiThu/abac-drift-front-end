@@ -22,3 +22,13 @@ export const AppointmentSchema = Joi.object({
 	motorcycle: Joi.object().required(),
 	note: Joi.string().required()
 })
+
+export const UserSchema = Joi.object({
+	username: Joi.string().required(),
+	email: Joi.string().required(),
+	bio: Joi.string(),
+	dob: Joi.date().required(),
+	type: Joi.string().valid('buyer', 'seller').required(),
+	appointments: Joi.array(),
+	phoneNumber: Joi.string().required()
+})

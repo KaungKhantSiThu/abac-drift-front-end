@@ -101,6 +101,7 @@ declare global {
   const useSupabaseUser: typeof import('../../node_modules/@nuxtjs/supabase/dist/runtime/composables/useSupabaseUser')['useSupabaseUser']
   const useToast: typeof import('../../composables/useToast')['default']
   const useTransitionState: typeof import('vue')['useTransitionState']
+  const useUserStore: typeof import('../../composables/userStore')['useUserStore']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const withCtx: typeof import('vue')['withCtx']
@@ -214,6 +215,7 @@ declare module '@vue/runtime-core' {
     readonly useSupabaseUser: UnwrapRef<typeof import('../../node_modules/@nuxtjs/supabase/dist/runtime/composables/useSupabaseUser')['useSupabaseUser']>
     readonly useToast: UnwrapRef<typeof import('../../composables/useToast')['default']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
+    readonly useUserStore: UnwrapRef<typeof import('../../composables/userStore')['useUserStore']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly withCtx: UnwrapRef<typeof import('vue')['withCtx']>

@@ -75,7 +75,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
             return (appointmentId) => state.appointments.find((appointment) => appointment._id === appointmentId)
         },
 
-        getAppointmentByEmail: (state) => {
+        getAppointmentsByEmail: (state) => {
             return (email) => state.appointments.filter((appointment) => (appointment.seller === email || appointment.buyer === email))
         }
     }
