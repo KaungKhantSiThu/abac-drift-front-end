@@ -12,7 +12,6 @@ export default defineNuxtConfig({
 	// server config variable
 	runtimeConfig: {
 		MONGO_URI: process.env.MONGO_URI,
-		API_URL: process.env.API_URL
 	},
 	// register nitro plugin
 	nitro: {

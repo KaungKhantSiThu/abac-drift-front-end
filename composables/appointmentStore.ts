@@ -4,14 +4,13 @@ import useToast from "./useToast";
 
 export const useAppointmentStore = defineStore("appointment-store", {
     state: () => ({
-        appointments: [] as IAppointment[],
-        api_url: useRuntimeConfig().API_URL
+        appointments: [] as IAppointment[]
     }),
 
     actions: {
         async getAll() {
             try {
-                let data = await $fetch<IAppointment[]>(`${this.api_url}/appointments`);
+                let data = await $fetch<IAppointment[]>("/api/appointments");
                 this.appointments = data;
                 return data as IAppointment[];
             } catch (e) {
@@ -21,7 +20,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
 
         async getById(id: string) {
             try {
-                let data = await $fetch<IAppointment>(`${this.api_url}/appointments/${id}`);
+                let data = await $fetch<IAppointment>(`/api/appointments/${id}`);
                 return data as IAppointment;
             } catch (e) {
                 useToast().error(e.message);
@@ -30,7 +29,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
 
         // Create a new appointment
         async create(appointment: IAppointment) {
-            await $fetch(`${this.api_url}/appointments/create`, {
+            await $fetch("/api/appointments/create", {
                 method: "POST",
                 body: appointment,
             })
@@ -44,7 +43,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
         },
         // Update appointment information
         async update(id: string, appointment: IAppointment) {
-            await $fetch(`${this.api_url}/appointments/${id}`, {
+            await $fetch(`/api/appointments/${id}`, {
                 method: "PUT",
                 body: appointment,
             })
@@ -58,7 +57,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
         },
         // delete an appointment
         async remove(id: string) {
-            await $fetch(`${this.api_url}/appointments/${id}`, {
+            await $fetch(`/api/appointments/${id}`, {
                 method: "DELETE",
             })
                 .catch((e) => {
