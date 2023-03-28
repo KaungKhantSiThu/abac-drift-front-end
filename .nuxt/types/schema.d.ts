@@ -19,6 +19,8 @@ declare module '@nuxt/schema' {
 
     MONGO_URI: string,
 
+    API_URL: string,
+
     supabase: {
         serviceKey: any,
     },
