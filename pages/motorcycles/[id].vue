@@ -164,6 +164,8 @@ const submitAppointment = handleSubmit(async (values, ctx) => {
   delete appointmentObject['date']
   delete appointmentObject['time']
   await appointmentStore.create(appointmentObject)
+
+  navigateTo('/motorcycles')
   console.log(appointmentObject)
 })
 
