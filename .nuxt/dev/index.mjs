@@ -5,10 +5,8 @@ import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
 import { provider, isWindows } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
-import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, createError, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
-import mongoose from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/mongoose/index.js';
-import Joi from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/joi/lib/index.js';
 import { createRenderer } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
 import devalue from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
 import { renderToString } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue/server-renderer/index.mjs';
 import { parseURL, withQuery, joinURL } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ufo/dist/index.mjs';
@@ -22,7 +20,7 @@ import { hash } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-
 import { createStorage } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unstorage/dist/index.mjs';
 import unstorage_47drivers_47fs from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unstorage/dist/drivers/fs.mjs';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{"supabase":{"url":"https://xpggnsnswzjrzmbkyucc.supabase.co","key":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwZ2duc25zd3pqcnptYmt5dWNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzkzNzg1MzQsImV4cCI6MTk5NDk1NDUzNH0.VO4eZCE0BXfoKaVeT_bb-gucsYPM8mwueLrfsfXu2oU","client":{},"redirect":false,"cookies":{"name":"sb","lifetime":28800,"domain":"","path":"/","sameSite":"lax"}}},"MONGO_URI":"mongodb+srv://developer:pfHbRhhpaHHoIWfL@cluster0.bmqt335.mongodb.net/abac-drift","API_URL":"https://abac-drift-back-end.vercel.app/api","supabase":{}};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{"API_URL":"https://abac-drift-back-end.vercel.app/api","supabase":{"url":"https://xpggnsnswzjrzmbkyucc.supabase.co","key":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwZ2duc25zd3pqcnptYmt5dWNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzkzNzg1MzQsImV4cCI6MTk5NDk1NDUzNH0.VO4eZCE0BXfoKaVeT_bb-gucsYPM8mwueLrfsfXu2oU","client":{},"redirect":false,"cookies":{"name":"sb","lifetime":28800,"domain":"","path":"/","sameSite":"lax"}}},"supabase":{}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {
@@ -294,13 +292,8 @@ function cloneWithProxy(obj, overrides) {
 }
 const cachedEventHandler = defineCachedEventHandler;
 
-const _TgHpPHZr7o = async (_nitroApp) => {
-  const config = useRuntimeConfig();
-  mongoose.connect(config.MONGO_URI).then(() => console.log(`Connected to DB`)).catch((e) => console.log(e));
-};
-
 const plugins = [
-  _TgHpPHZr7o
+  
 ];
 
 function hasReqHeader(req, header, includes) {
@@ -414,37 +407,9 @@ const _Y8xdz0 = defineEventHandler(async (event) => {
   return "auth cookie set";
 });
 
-const _lazy_YfqoE3 = () => Promise.resolve().then(function () { return index$5; });
-const _lazy_BTXXuA = () => Promise.resolve().then(function () { return create_post$5; });
-const _lazy_t4OWAu = () => Promise.resolve().then(function () { return _id_$5; });
-const _lazy_uK7Lgg = () => Promise.resolve().then(function () { return _email_$1; });
-const _lazy_nbKlNm = () => Promise.resolve().then(function () { return index$3; });
-const _lazy_L8Vs0W = () => Promise.resolve().then(function () { return create_post$3; });
-const _lazy_EJgFSC = () => Promise.resolve().then(function () { return _id_$3; });
-const _lazy_TCh2W6 = () => Promise.resolve().then(function () { return _id__put$3; });
-const _lazy_KZ9ooJ = () => Promise.resolve().then(function () { return _id__delete$3; });
-const _lazy_7daedG = () => Promise.resolve().then(function () { return index$1; });
-const _lazy_sKycXm = () => Promise.resolve().then(function () { return create_post$1; });
-const _lazy_FgHqD4 = () => Promise.resolve().then(function () { return _id_$1; });
-const _lazy_km0c0K = () => Promise.resolve().then(function () { return _id__put$1; });
-const _lazy_r2uBqh = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/api/users', handler: _lazy_YfqoE3, lazy: true, middleware: false, method: undefined },
-  { route: '/api/users/create', handler: _lazy_BTXXuA, lazy: true, middleware: false, method: "post" },
-  { route: '/api/users/:id', handler: _lazy_t4OWAu, lazy: true, middleware: false, method: undefined },
-  { route: '/api/users/:email', handler: _lazy_uK7Lgg, lazy: true, middleware: false, method: undefined },
-  { route: '/api/motorcycles', handler: _lazy_nbKlNm, lazy: true, middleware: false, method: undefined },
-  { route: '/api/motorcycles/create', handler: _lazy_L8Vs0W, lazy: true, middleware: false, method: "post" },
-  { route: '/api/motorcycles/:id', handler: _lazy_EJgFSC, lazy: true, middleware: false, method: undefined },
-  { route: '/api/motorcycles/:id', handler: _lazy_TCh2W6, lazy: true, middleware: false, method: "put" },
-  { route: '/api/motorcycles/:id', handler: _lazy_KZ9ooJ, lazy: true, middleware: false, method: "delete" },
-  { route: '/api/appointments', handler: _lazy_7daedG, lazy: true, middleware: false, method: undefined },
-  { route: '/api/appointments/create', handler: _lazy_sKycXm, lazy: true, middleware: false, method: "post" },
-  { route: '/api/appointments/:id', handler: _lazy_FgHqD4, lazy: true, middleware: false, method: undefined },
-  { route: '/api/appointments/:id', handler: _lazy_km0c0K, lazy: true, middleware: false, method: "put" },
-  { route: '/api/appointments/:id', handler: _lazy_r2uBqh, lazy: true, middleware: false, method: "delete" },
   { route: '/__nuxt_error', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined },
   { route: '/api/_supabase/session', handler: _Y8xdz0, lazy: false, middleware: false, method: undefined },
   { route: '/**', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined }
@@ -522,310 +487,6 @@ server.listen(listenAddress, () => {
   process.on("unhandledRejection", (err) => console.error("[nitro] [dev] [unhandledRejection]", err));
   process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException]", err));
 }
-
-const { Schema: Schema$2 } = mongoose;
-const schema$2 = new Schema$2(
-  {
-    username: String,
-    email: String,
-    bio: String,
-    phoneNumber: String,
-    dob: Date,
-    type: {
-      type: String,
-      enum: ["buyer", "seller"],
-      default: "buyer"
-    },
-    appointments: [String]
-  },
-  { timestamps: true }
-);
-const UserModel = mongoose.model("User", schema$2, "users");
-
-const index$4 = defineEventHandler(async (event) => {
-  return UserModel.find();
-});
-
-const index$5 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': index$4
-});
-
-const MotorcycleSchema = Joi.object({
-  title: Joi.string().required(),
-  price: Joi.number().required(),
-  gear: Joi.string().required(),
-  mileage: Joi.number().required(),
-  engine: Joi.number().required(),
-  year: Joi.number().required(),
-  manufacturer: Joi.string().required(),
-  imageURLs: Joi.array().required(),
-  description: Joi.string().required(),
-  seller: Joi.string().required()
-});
-const AppointmentSchema = Joi.object({
-  datetime: Joi.date().required(),
-  seller: Joi.string().required(),
-  buyer: Joi.string().required(),
-  status: Joi.string().required(),
-  location: Joi.string().required(),
-  motorcycle: Joi.object().required(),
-  note: Joi.string().required()
-});
-const UserSchema = Joi.object({
-  username: Joi.string().required(),
-  email: Joi.string().required(),
-  bio: Joi.string(),
-  dob: Joi.date().required(),
-  type: Joi.string().valid("buyer", "seller").required(),
-  appointments: Joi.array(),
-  phoneNumber: Joi.string().required()
-});
-
-const create_post$4 = defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  let { error } = UserSchema.validate(body);
-  if (error) {
-    throw createError({
-      message: error.message.replace(/"/g, ""),
-      statusCode: 400,
-      fatal: false
-    });
-  }
-  try {
-    await UserModel.create(body);
-  } catch (e) {
-    throw createError({ message: e.message });
-  }
-});
-
-const create_post$5 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': create_post$4
-});
-
-const _id_$4 = defineEventHandler(async (event) => {
-  const { id } = event.context.params;
-  return UserModel.findById(id).exec();
-});
-
-const _id_$5 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id_$4
-});
-
-const _email_ = defineEventHandler(async (event) => {
-  const { email } = event.context.params;
-  return UserModel.findOne({ email }).exec();
-});
-
-const _email_$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _email_
-});
-
-const { Schema: Schema$1 } = mongoose;
-const schema$1 = new Schema$1(
-  {
-    title: String,
-    price: Number,
-    gear: String,
-    mileage: Number,
-    engine: Number,
-    year: String,
-    manufacturer: String,
-    imageURLs: [String],
-    seller: String,
-    description: String
-  }
-);
-const MotorcycleModel = mongoose.model("Motorcycle", schema$1, "motorcycles");
-
-const index$2 = defineEventHandler(async (event) => {
-  return MotorcycleModel.find();
-});
-
-const index$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': index$2
-});
-
-const create_post$2 = defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  let { error } = MotorcycleSchema.validate(body);
-  if (error) {
-    throw createError({
-      message: error.message.replace(/"/g, ""),
-      statusCode: 400,
-      fatal: false
-    });
-  }
-  try {
-    await MotorcycleModel.create(body);
-  } catch (e) {
-    throw createError({ message: e.message });
-  }
-});
-
-const create_post$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': create_post$2
-});
-
-const _id_$2 = defineEventHandler(async (event) => {
-  const { id } = event.context.params;
-  return MotorcycleModel.findById(id).exec();
-});
-
-const _id_$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id_$2
-});
-
-const _id__put$2 = defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const id = event.context.params.id;
-  let { error } = MotorcycleSchema.validate(body, { abortEarly: true, allowUnknown: true });
-  if (error) {
-    throw createError({
-      message: error.message.replace(/"/g, ""),
-      statusCode: 400,
-      fatal: false
-    });
-  }
-  try {
-    await MotorcycleModel.findByIdAndUpdate(id, body);
-    return { message: "Motorcycle updated" };
-  } catch (e) {
-    throw createError({
-      message: e.message
-    });
-  }
-});
-
-const _id__put$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id__put$2
-});
-
-const { Schema } = mongoose;
-const schema = new Schema(
-  {
-    datetime: Date,
-    seller: String,
-    buyer: String,
-    status: String,
-    location: String,
-    note: String,
-    motorcycle: {
-      type: Schema.Types.ObjectId,
-      ref: "Motorcycle"
-    }
-  }
-);
-const AppointmentModel = mongoose.model("Appointment", schema, "appointments");
-
-const _id__delete$2 = defineEventHandler(async (event) => {
-  const id = event.context.params.id;
-  try {
-    await MotorcycleModel.findByIdAndDelete(id);
-    await AppointmentModel.deleteMany({ motorcycle: id });
-    return { message: "Motorcycle removed" };
-  } catch (e) {
-    throw createError({
-      message: e.message
-    });
-  }
-});
-
-const _id__delete$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id__delete$2
-});
-
-const index = defineEventHandler(async (event) => {
-  return AppointmentModel.find().populate("motorcycle");
-});
-
-const index$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': index
-});
-
-const create_post = defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  let { error } = AppointmentSchema.validate(body);
-  if (error) {
-    throw createError({
-      message: error.message.replace(/"/g, ""),
-      statusCode: 400,
-      fatal: false
-    });
-  }
-  try {
-    await AppointmentModel.create(body);
-  } catch (e) {
-    throw createError({ message: e.message });
-  }
-});
-
-const create_post$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': create_post
-});
-
-const _id_ = defineEventHandler(async (event) => {
-  const { id } = event.context.params;
-  return AppointmentModel.findById(id).populate("motorcycle").exec();
-});
-
-const _id_$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id_
-});
-
-const _id__put = defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const id = event.context.params.id;
-  let { error } = AppointmentSchema.validate(body, { abortEarly: true, allowUnknown: true });
-  if (error) {
-    throw createError({
-      message: error.message.replace(/"/g, ""),
-      statusCode: 400,
-      fatal: false
-    });
-  }
-  try {
-    await AppointmentModel.findByIdAndUpdate(id, body);
-    return { message: "Appointment updated" };
-  } catch (e) {
-    throw createError({
-      message: e.message
-    });
-  }
-});
-
-const _id__put$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id__put
-});
-
-const _id__delete = defineEventHandler(async (event) => {
-  const id = event.context.params.id;
-  try {
-    await AppointmentModel.findByIdAndDelete(id);
-    return { message: "Appointment removed" };
-  } catch (e) {
-    throw createError({
-      message: e.message
-    });
-  }
-});
-
-const _id__delete$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  'default': _id__delete
-});
 
 function buildAssetsURL(...path) {
   return joinURL(publicAssetsURL(), useRuntimeConfig().app.buildAssetsDir, ...path);
