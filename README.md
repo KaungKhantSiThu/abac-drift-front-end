@@ -10,8 +10,8 @@ ABAC Drift
  
 ## Project description
 
-### Entities (Buyer, Seller & Motorcycle)
-Buying and selling second-hand motorcycle platform. The sellers can list their motorcycles along with the necessary information. Buyers can see all the motorcycles and make an appointment on the date and time they want. Our first entity is the motorcycle information, including appointment details. The second entity is seller information and the third one is buyer information.
+### Entities (User, Appointment & Motorcycle)
+Buying and selling second-hand motorcycle platform. The sellers can list their motorcycles along with the necessary information. Buyers can see all the motorcycles and make an appointment on the date and time they want. Our first entity is  Motorcycle. The second entity is Appointment and the third one is User (Buyer & Seller).
  
 ## Tech Stack
 - Vue.js (front-end)
