@@ -90,6 +90,7 @@ import {
 } from "@headlessui/vue";
 import { useForm } from "vee-validate";
 import {useUserStore} from "~/composables/userStore";
+import useToast from "~/composables/useToast";
 
 // instantiate author store
 const userStore = useUserStore();
@@ -121,8 +122,10 @@ const submitUser = handleSubmit(async (values, ctx) => {
     delete values.password
     values['dob'] = new Date(values.dob)
     await userStore.create({...values, type: type.value})
+    useToast().success("Please check your email for the confirmation link");
     closeModal();
   } else {
+    useToast().warning("The email is already in use")
     console.log("The email already exists. Use another one")
   }
 });
