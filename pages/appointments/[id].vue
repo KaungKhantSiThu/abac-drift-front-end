@@ -54,8 +54,8 @@
                 <h4>{{ appointment.motorcycle.title }}</h4>
               </div>
             </div>
-            <div clas="row text-start">
-              <div clas="col">
+            <div class="row text-start">
+              <div class="col">
                 <h5 class="text-muted">{{ appointment.motorcycle.manufacturer }}</h5>
               </div>
               <div class="col">
@@ -66,7 +66,7 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-primary cancel-btn" @click="appointmentStore.remove(appointment._id)">
+      <button class="btn btn-primary cancel-btn" @click="removeAppointment(appointment._id)">
         <Icon size="18" name="fluent:delete-24-regular" /> Cancel appointment
       </button>
     </div>
@@ -90,7 +90,10 @@ const isBuyer = currentUser.type === 'buyer'
 const buyer = await userStore.getByEmail(appointment.buyer)
 const seller = await userStore.getByEmail(appointment.seller)
 
-console.log(buyer)
+const removeAppointment = (id: string) => {
+  appointmentStore.remove(id)
+  navigateTo('/appointments')
+}
 </script>
 
 <style scoped>
