@@ -25,7 +25,7 @@
 <!--                {{ userObject._id ? "Update the user" : "Register a new user" }}-->
 <!--              </p>-->
 
-              <form @submit="submitUser" class="mt-5">
+              <form @submit="submitUser" class="mt-4">
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div class="col-span-full">
                     <FormInput placeholder="Enter Full Name" rules="required"
@@ -43,14 +43,14 @@
                     <FormInput placeholder="Enter Bio"
                                label="Bio" type="text" name="bio" />
 
-                    <div class="form-check">
+                    <div class="form-check mt-2">
                       <input class="form-check-input" type="radio" id="buyer" v-model="type" value="buyer">
                       <label class="form-check-label" for="buyer">
                         buyer
                       </label>
                     </div>
 
-                    <div class="form-check">
+                    <div class="form-check mt-2">
                       <input class="form-check-input" type="radio" id="seller" v-model="type" value="seller">
                       <label class="form-check-label" for="seller">
                         seller
@@ -69,7 +69,7 @@
                           class="px-4 text-sm bg-gray-100 py-2.5 rounded-md">
                     Cancel
                   </button>
-                  <button  type="submit" class="btn">{{ userObject._id ? "Update" : "Create" }}</button>
+                  <button  type="submit" class="btn text-white">{{ userObject._id ? "Update" : "Create" }}</button>
                 </div>
               </form>
             </DialogPanel>

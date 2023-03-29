@@ -4,25 +4,23 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
-
-import { provider, isWindows } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
-import { createRenderer } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, getQuery } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/h3/dist/index.mjs';
-import devalue from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
-import { renderToString } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/vue/server-renderer/index.mjs';
-import { parseURL, withQuery, joinURL } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ufo/dist/index.mjs';
-import destr from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/destr/dist/index.mjs';
-import { snakeCase } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/scule/dist/index.mjs';
-import { createFetch as createFetch$1, Headers } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ohmyfetch/dist/node.mjs';
-import { createRouter as createRouter$1 } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/radix3/dist/index.mjs';
-import { createCall, createFetch } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/hookable/dist/index.mjs';
-import { hash } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/ohash/dist/index.mjs';
-import { createStorage } from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/kaungkhantsithu/Documents/GitHub/abac-drift-front-end/node_modules/unstorage/dist/drivers/fs.mjs';
+import { provider, isWindows } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/std-env/dist/index.mjs';
+import { createRenderer } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { eventHandler, defineEventHandler, handleCacheHeaders, createEvent, assertMethod, readBody, setCookie, createApp, createRouter, lazyEventHandler, getQuery } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/h3/dist/index.mjs';
+import devalue from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/@nuxt/devalue/dist/devalue.mjs';
+import { renderToString } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/vue/server-renderer/index.mjs';
+import { parseURL, withQuery, joinURL } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/ufo/dist/index.mjs';
+import destr from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/destr/dist/index.mjs';
+import { snakeCase } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/scule/dist/index.mjs';
+import { createFetch as createFetch$1, Headers } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/ohmyfetch/dist/node.mjs';
+import { createRouter as createRouter$1 } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/radix3/dist/index.mjs';
+import { createCall, createFetch } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/hookable/dist/index.mjs';
+import { hash } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/ohash/dist/index.mjs';
+import { createStorage } from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file://C:/Web%20Dev%20Project/abac-drift-front-end/node_modules/unstorage/dist/drivers/fs.mjs';
 
 const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routes":{},"envPrefix":"NUXT_"},"public":{"API_URL":"https://abac-drift-back-end.vercel.app/api","supabase":{"url":"https://xpggnsnswzjrzmbkyucc.supabase.co","key":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwZ2duc25zd3pqcnptYmt5dWNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzkzNzg1MzQsImV4cCI6MTk5NDk1NDUzNH0.VO4eZCE0BXfoKaVeT_bb-gucsYPM8mwueLrfsfXu2oU","client":{},"redirect":false,"cookies":{"name":"sb","lifetime":28800,"domain":"","path":"/","sameSite":"lax"}}},"supabase":{}};
-
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {
@@ -295,7 +293,7 @@ function cloneWithProxy(obj, overrides) {
 const cachedEventHandler = defineCachedEventHandler;
 
 const plugins = [
- 
+  
 ];
 
 function hasReqHeader(req, header, includes) {
@@ -409,13 +407,12 @@ const _9eyhfF = defineEventHandler(async (event) => {
   return "auth cookie set";
 });
 
-
-const _lazy_o4HF3I = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_XdOYOZ = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined },
-  { route: '/api/_supabase/session', handler: _Y8xdz0, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_o4HF3I, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_XdOYOZ, lazy: true, middleware: false, method: undefined },
+  { route: '/api/_supabase/session', handler: _9eyhfF, lazy: false, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_XdOYOZ, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
