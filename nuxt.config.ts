@@ -1,4 +1,5 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+
 export default defineNuxtConfig({
 	modules: ["@nuxtjs/tailwindcss", "nuxt-icon", "@pinia/nuxt", "@nuxtjs/supabase"],
 	// custom tailwindcss path
@@ -11,11 +12,9 @@ export default defineNuxtConfig({
 
 	// server config variable
 	runtimeConfig: {
-		MONGO_URI: process.env.MONGO_URI,
-	},
-	// register nitro plugin
-	nitro: {
-		plugins: ["@/server/db/index.ts"],
+		public: {
+			API_URL: process.env.API_URL
+		}
 	},
 	/// transpile  afew packages
 	build: {
@@ -30,4 +29,5 @@ export default defineNuxtConfig({
 			},
 		],
 	},
+
 });

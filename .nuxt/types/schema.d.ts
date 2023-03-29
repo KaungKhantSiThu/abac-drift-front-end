@@ -16,14 +16,14 @@ declare module '@nuxt/schema' {
         cdnURL: string,
     },
 
-    MONGO_URI: string,
-
     supabase: {
         serviceKey: any,
     },
   }
   interface PublicRuntimeConfig {
-     supabase: {
+     API_URL: string,
+
+    supabase: {
         url: string,
 
         key: string,

@@ -1,16 +1,20 @@
 import { defineStore } from "pinia";
 import { IMotorcycle } from "~~/types";
 import useToast from "./useToast";
+import {useRuntimeConfig} from "#build/imports";
 
 export const useMotorcycleStore = defineStore("motorcycle-store", {
     state: () => ({
-        motorcycles: [] as IMotorcycle[]
+        motorcycles: [] as IMotorcycle[],
+		API_URL: useRuntimeConfig().public.API_URL
+
     }),
 
     actions: {
         async getAll() {
             try {
-                let data = await $fetch<IMotorcycle[]>("/api/motorcycles");
+                let data = await $fetch<IMotorcycle[]>(`${this.API_URL}/motorcycles`);
+
                 this.motorcycles = data;
                 return data as IMotorcycle[];
             } catch (e) {
@@ -20,7 +24,8 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 
 		async getById(id: string) {
 			try {
-				let data = await $fetch<IMotorcycle>(`/api/motorcycles/${id}`);
+				let data = await $fetch<IMotorcycle>(`${this.API_URL}/motorcycles/${id}`);
+
 				return data as IMotorcycle;
 			} catch (e) {
 				useToast().error(e.message);
@@ -28,7 +33,8 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 		},
         // Create a new motorcycle
         async create(motorcycle: IMotorcycle) {
-			await $fetch("/api/motorcycles/create", {
+
+			await $fetch(`${this.API_URL}/motorcycles/create`, {
 				method: "POST",
 				body: motorcycle,
 			})
@@ -42,7 +48,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 		},
         // Update motorcycle information
 		async update(id: string, motorcycle: IMotorcycle) {
-			await $fetch(`/api/motorcycles/${id}`, {
+			await $fetch(`${this.API_URL}/motorcycles/${id}`, {
 				method: "PUT",
 				body: motorcycle,
 			})
@@ -56,7 +62,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 		},
         // delete a motorcycle
 		async remove(id: string) {
-			await $fetch(`/api/motorcycles/${id}`, {
+			await $fetch(`${this.API_URL}/motorcycles/${id}`, {
 				method: "DELETE",
 			})
 				.catch((e) => {

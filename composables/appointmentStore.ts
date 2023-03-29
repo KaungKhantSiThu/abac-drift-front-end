@@ -1,16 +1,19 @@
 import { defineStore } from "pinia";
 import { IAppointment } from "~~/types";
 import useToast from "./useToast";
-
+import {useRuntimeConfig} from "#imports";
 export const useAppointmentStore = defineStore("appointment-store", {
     state: () => ({
-        appointments: [] as IAppointment[]
+        appointments: [] as IAppointment[],
+        API_URL: useRuntimeConfig().public.API_URL
+
     }),
 
     actions: {
         async getAll() {
             try {
-                let data = await $fetch<IAppointment[]>("/api/appointments");
+                let data = await $fetch<IAppointment[]>(`${this.API_URL}/appointments`);
+
                 this.appointments = data;
                 return data as IAppointment[];
             } catch (e) {
@@ -20,7 +23,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
 
         async getById(id: string) {
             try {
-                let data = await $fetch<IAppointment>(`/api/appointments/${id}`);
+                let data = await $fetch<IAppointment>(`${this.API_URL}/appointments/${id}`);
                 return data as IAppointment;
             } catch (e) {
                 useToast().error(e.message);
@@ -29,7 +32,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
 
         // Create a new appointment
         async create(appointment: IAppointment) {
-            await $fetch("/api/appointments/create", {
+            await $fetch(`${this.API_URL}/appointments/create`, {
                 method: "POST",
                 body: appointment,
             })
@@ -43,7 +46,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
         },
         // Update appointment information
         async update(id: string, appointment: IAppointment) {
-            await $fetch(`/api/appointments/${id}`, {
+            await $fetch(`${this.API_URL}/appointments/${id}`, {
                 method: "PUT",
                 body: appointment,
             })
@@ -57,7 +60,8 @@ export const useAppointmentStore = defineStore("appointment-store", {
         },
         // delete an appointment
         async remove(id: string) {
-            await $fetch(`/api/appointments/${id}`, {
+            await $fetch(`${this.API_URL}/appointments/${id}`, {
+
                 method: "DELETE",
             })
                 .catch((e) => {
