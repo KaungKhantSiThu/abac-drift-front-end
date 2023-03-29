@@ -4,7 +4,7 @@
   <button
       v-if="currentUser.type === 'seller'"
       @click="motorcycleModal.openModal()"
-      class="w-full py-3.5 md:py-2.5 md:w-auto btn shrink-0">
+      class="w-full text-white py-3.5 md:py-2.5 md:w-auto btn shrink-0">
     Add Motorcycle
   </button>
       <h3 v-if="currentUser.type === 'seller' && motorcycleStore.getMotorcycleByEmail(currentUser.email).length === 0">You can start by listing your motorcycle here</h3>
