@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { IUser } from "~~/types";
 import useToast from "./useToast";
-import {useRuntimeConfig} from "#build/imports";
 
 export const useUserStore = defineStore("user-store", {
     state: () => ({
