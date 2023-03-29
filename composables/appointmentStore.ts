@@ -6,12 +6,14 @@ export const useAppointmentStore = defineStore("appointment-store", {
     state: () => ({
         appointments: [] as IAppointment[],
         API_URL: useRuntimeConfig().public.API_URL
+
     }),
 
     actions: {
         async getAll() {
             try {
                 let data = await $fetch<IAppointment[]>(`${this.API_URL}/appointments`);
+
                 this.appointments = data;
                 return data as IAppointment[];
             } catch (e) {
@@ -59,6 +61,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
         // delete an appointment
         async remove(id: string) {
             await $fetch(`${this.API_URL}/appointments/${id}`, {
+
                 method: "DELETE",
             })
                 .catch((e) => {

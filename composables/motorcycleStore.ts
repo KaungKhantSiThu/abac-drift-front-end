@@ -7,12 +7,14 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
     state: () => ({
         motorcycles: [] as IMotorcycle[],
 		API_URL: useRuntimeConfig().public.API_URL
+
     }),
 
     actions: {
         async getAll() {
             try {
                 let data = await $fetch<IMotorcycle[]>(`${this.API_URL}/motorcycles`);
+
                 this.motorcycles = data;
                 return data as IMotorcycle[];
             } catch (e) {
@@ -23,6 +25,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 		async getById(id: string) {
 			try {
 				let data = await $fetch<IMotorcycle>(`${this.API_URL}/motorcycles/${id}`);
+
 				return data as IMotorcycle;
 			} catch (e) {
 				useToast().error(e.message);
@@ -30,6 +33,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 		},
         // Create a new motorcycle
         async create(motorcycle: IMotorcycle) {
+
 			await $fetch(`${this.API_URL}/motorcycles/create`, {
 				method: "POST",
 				body: motorcycle,
