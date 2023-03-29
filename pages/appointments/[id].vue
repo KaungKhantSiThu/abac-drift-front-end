@@ -1,25 +1,30 @@
 <template>
-  <div class="row my-3">
+  <div class="row my-3 mt-5 justify-content-center">
     <div class="card" style="width: 60rem;">
       <div class="card-body">
         <div class="row text-center">
-          <h5 class="">Appointment Date & Time</h5>
+          <h5 class="mt-5">Appointment Date & Time</h5>
           <p class="fs-5">{{ appointment.datetime }}</p>
         </div>
-        <div class="row my-3 text-center">
+        <div class="row my-3 text-left">
           <div class="col">
             <div class="row my-2">
               <h4>Seller</h4>
-            </div>
-            <div class="row my-3">
-              <div class="col text-start px-0">
-                <h4 class="mt-2">{{ appointment.buyer }}</h4>
-                <h5 class="my-3"><i class="fa-solid fa-location-dot"></i>{{ appointment.location }}</h5>
+              <div class=" text-start px-3">
+                <p class="fs-5">{{ appointment.buyer }}</p>
               </div>
             </div>
-            <div class="row text-start ms-5 mt-4">
-              <h5 class="">Phone Number</h5>
-              <p class="fs-5">{{ appointment.status }}</p>
+            <div class="row my-3">
+              <h4>Location</h4>
+              <div class="col text-start px-3">
+                <p class="fs-5"><i class="fa-solid fa-location-dot"></i>{{ appointment.location }}</p>
+              </div>
+            </div>
+            <div class="row my-3">
+              <h4>Phone Number</h4>
+              <div class="col text-start px-3">
+                <p class="fs-5">{{ appointment.status }}</p>
+              </div>
             </div>
           </div>
           <div class="col">
