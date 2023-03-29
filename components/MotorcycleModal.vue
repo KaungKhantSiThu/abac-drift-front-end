@@ -22,54 +22,54 @@
                                     "Add" }} Motorcycle</DialogTitle>
                             </div>
                             <p class="mt-3 fs-6 text-gray-500">
-                                {{ motorcycle._id ? "Update this motorcycle" : "Upload motorcycle information" }}
+                                {{ motorcycle._id ? "Update this motorcycle" : "List your motorcycle" }}
                             </p>
 
                             <form @submit="submitMotorcycle" class="mt-4">
                                 <div class="grid grid-cols-1 gap-4 ">
                                     <div class="row">
                                         <div class="col">
-                                            <FormInput placeholder="Enter Brand" rules="required" label="Brand" type="text"
+                                            <FormInput placeholder="Enter model" rules="required" label="Model" type="text"
                                                 name="title" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
 
-                                            <FormInput placeholder="Enter Gear" rules="required" label="Gear" type="text"
+                                            <FormInput placeholder="Enter gear" rules="required" label="Gear" type="text"
                                                 name="gear" />
                                         </div>
 
                                         <div class="col">
-                                            <FormInput placeholder="Enter  mileage" rules="required" label="Mileage"
+                                            <FormInput placeholder="Enter mileage" rules="required" label="Mileage"
                                                 type="number" name="mileage" />
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col">
-                                            <FormInput placeholder="Enter Price" rules="required" label="Price"
+                                            <FormInput placeholder="Enter price" rules="required" label="Price"
                                                 type="number" name="price" />
                                         </div>
                                         <div class="col">
-                                            <FormInput placeholder="Enter Engine" rules="required" label="Engine"
+                                            <FormInput placeholder="Enter engine" rules="required" label="Engine"
                                                 type="number" name="engine" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <FormInput placeholder="Enter Year" rules="required" label="Year" type="text"
+                                            <FormInput placeholder="Enter year" rules="required" label="Year" type="text"
                                                 name="year" />
                                         </div>
                                         <div class="col">
-                                            <FormInput placeholder="Enter Manufacturer" rules="required"
+                                            <FormInput placeholder="Enter manufacturer" rules="required"
                                                 label="Manufacturer" type="text" name="manufacturer" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
 
-                                    <FormInput placeholder="Enter Description" rules="required" label="Description"
+                                    <FormInput placeholder="Enter description" rules="required" label="Description"
                                         type="text" name="description" />
                                     </div>
                                     </div>
@@ -83,7 +83,7 @@
                                         class="px-4 text-sm bg-gray-100 py-2.5 rounded-md">
                                         Cancel
                                     </button>
-                                    <button type="submit" class="btn text-white">{{ motorcycle._id ? "Update" : "Create" }}</button>
+                                    <button type="submit" class="btn text-white" style="width:90px; height:40px; padding:5px;">{{ motorcycle._id ? "Update" : "Create" }}</button>
                                 </div>
                             </form>
                         </DialogPanel>
@@ -183,4 +183,5 @@ defineExpose({
 .bg-gray-100{
     border-color: black;
 }
+
 </style>
