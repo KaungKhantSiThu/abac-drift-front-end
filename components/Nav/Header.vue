@@ -2,7 +2,7 @@
 	<header class="w-full border-b border-gray-200 bg-white/50 backdrop-blur" style="background:#5c5470;">
 		<div class="flex items-center justify-between h-20 px-3 mx-auto max-w-7xl">
       <NuxtLink href="/"  class="navbar-brand">
-                  <img src="@/public/assets/images/au.png" class="logo" />
+                  <img src="/assets/images/au.png" class="logo"  alt="Icon"/>
               </NuxtLink>
 			<nav class="flex items-center px-20">
 				<template v-if="user" v-for="n in menu" :key="`menuItem${n.name}`">

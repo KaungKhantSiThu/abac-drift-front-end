@@ -8,9 +8,9 @@
         <div class="row my-3  mt-5 text-left">
           <div class="col">
             <div class="row my-2">
-              <h4>Seller</h4>
+              <h4>{{ isBuyer ? "Seller" : "Buyer" }}</h4>
               <div class=" text-start px-3">
-                <p class="fs-5">{{ appointment.buyer }}</p>
+                <p class="fs-5">{{ isBuyer ? seller.username : buyer.username }}</p>
               </div>
             </div>
 
@@ -54,8 +54,8 @@
                 <h4>{{ appointment.motorcycle.title }}</h4>
               </div>
             </div>
-            <div clas="row text-start">
-              <div clas="col">
+            <div class="row text-start">
+              <div class="col">
                 <h5 class="text-muted">{{ appointment.motorcycle.manufacturer }}</h5>
               </div>
               <div class="col">
@@ -66,6 +66,9 @@
           </div>
         </div>
       </div>
+      <button class="btn btn-primary cancel-btn" @click="removeAppointment(appointment._id)">
+        <Icon size="18" name="fluent:delete-24-regular" /> Cancel appointment
+      </button>
     </div>
   </div>
 </template>
@@ -83,6 +86,18 @@ const user = useSupabaseUser();
 
 const userStore = useUserStore();
 const currentUser = await userStore.getByEmail(user.value.email)
+const isBuyer = currentUser.type === 'buyer'
+const buyer = await userStore.getByEmail(appointment.buyer)
+const seller = await userStore.getByEmail(appointment.seller)
 
-
+const removeAppointment = (id: string) => {
+  appointmentStore.remove(id)
+  navigateTo('/appointments')
+}
 </script>
+
+<style scoped>
+.cancel-btn {
+  margin-bottom: 15px;
+}
+</style>

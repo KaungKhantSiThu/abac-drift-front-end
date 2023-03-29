@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="flex space-x-4 text-gray-500">
+      <div v-if="currentUser.type === 'seller'" class="flex space-x-4 text-gray-500">
         <button class="btn" @click="motorcycleModal.openModal(motorcycle)">
           <Icon size="18" name="fluent:pen-24-regular" />
          Edit</button>
@@ -15,24 +15,24 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
           <div class="carousel-indicators" style="margin-bottom:-40px;">
             <button v-for="(url, index) in motorcycle.imageURLs" type="button" data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index"
-                    class="active" aria-current="true" style="width: 100px;">
+                    :class="{active: carouselIndex === index}" aria-current="true" style="width: 100px;">
               <img :src="url" class="d-block w-100 shadow-1-strong rounded" alt="" />
             </button>
           </div>
           <div class="carousel-inner">
-            <div v-for="(url) in motorcycle.imageURLs" class="carousel-item active">
+            <div v-for="(url, index) in motorcycle.imageURLs" :class="{'carousel-item': true, active: carouselIndex === index}">
               <div class="smallcar">
-              <img :src="url" class="d-block w-100" alt="...">
-            </div>
+                <img :src="url" class="d-block w-100" alt="...">
+              </div>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="prev">
+                  data-bs-slide="prev" @click="previousIndex">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="next">
+                  data-bs-slide="next" @click="nextIndex">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -117,7 +117,6 @@
         </div>
       </div>
     </div>
-
     <MotorcycleModal ref="motorcycleModal" />
 
   </div>
@@ -127,6 +126,7 @@
 import {useMotorcycleStore} from "~/composables/motorcycleStore";
 import { useForm } from "vee-validate"
 import {useUserStore} from "~/composables/userStore";
+
 
 const user = useSupabaseUser();
 
@@ -140,6 +140,19 @@ const appointment = ref({});
 const id  = useRoute().params.id as string;
 
 const motorcycle = await motorcycleStore.getById(id);
+
+const carouselIndex = ref(0);
+
+const nextIndex = () => {
+  if (carouselIndex.value < motorcycle.imageURLs.length - 1)
+    carouselIndex.value++
+}
+
+const previousIndex = () => {
+  if (carouselIndex.value > 0) {
+    carouselIndex.value--
+  }
+}
 
 const { handleSubmit } = useForm({
   initialValues: appointment,
@@ -157,6 +170,7 @@ const motorcycleModal = ref();
 
 const removeMotorcycle = async (motorcycle) => {
   await motorcycleStore.remove(motorcycle._id)
+  navigateTo('/motorcycles')
 }
 
 </script>
@@ -182,8 +196,7 @@ const removeMotorcycle = async (motorcycle) => {
   
 }
 .badge {
-  border: 1px solid;
-  border-color: #fc9134;
+  border: 1px solid #fc9134;
   background-color: #fc9134;
   max-width: 250px;
   height: 50px;

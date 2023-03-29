@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { IMotorcycle } from "~~/types";
 import useToast from "./useToast";
-import {useRuntimeConfig} from "#build/imports";
 
 export const useMotorcycleStore = defineStore("motorcycle-store", {
     state: () => ({
@@ -25,7 +24,6 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 		async getById(id: string) {
 			try {
 				let data = await $fetch<IMotorcycle>(`${this.API_URL}/motorcycles/${id}`);
-
 				return data as IMotorcycle;
 			} catch (e) {
 				useToast().error(e.message);
@@ -39,7 +37,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 				body: motorcycle,
 			})
 				.catch((e) => {
-					useToast().error(e.data.message);
+					//useToast().error(e.data.message);
 				})
 				.then(async () => {
 					await this.getAll();
@@ -53,7 +51,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 				body: motorcycle,
 			})
 				.catch((e) => {
-					useToast().error(e.data.message);
+					//useToast().error(e.data.message);
 				})
 				.then(async () => {
 					await this.getAll();
@@ -66,7 +64,7 @@ export const useMotorcycleStore = defineStore("motorcycle-store", {
 				method: "DELETE",
 			})
 				.catch((e) => {
-					useToast().error(e.data.message);
+					//useToast().error(e.data.message);
 				})
 				.then(async () => {
 					await this.getAll();
