@@ -4,7 +4,7 @@
       <div class="hero-container" data-aos="fade-in">
         <div class="bg-dark  text-sm py-5 mx-5" style="--bs-bg-opacity: .5;">
           <h1>Welcome to ABAC-Drift</h1>
-          <p><em>We offer the <strong>best</strong> second hand motorcycle service for AAC students</em></p>
+          <p><em>We offer the <strong>best</strong> second hand motorcycle service for ABAC students</em></p>
           <div class="text-start" style="margin-left: 60px;">
             <NuxtLink :to="{ path: `/motorcycles/` }">
               <button type="button" class="btn p text-white">Get Started</button>

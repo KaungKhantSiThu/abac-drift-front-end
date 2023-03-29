@@ -36,7 +36,7 @@
             <div class="row my-3">
               <h4>Phone Number</h4>
               <div class="col text-start px-3">
-                <p class="fs-5">{{ appointment.status }}</p>
+                <p class="fs-5">{{ isBuyer ? seller.username : buyer.username }}</p>
               </div>
             </div>
           </div>

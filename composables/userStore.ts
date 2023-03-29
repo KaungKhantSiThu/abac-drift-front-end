@@ -15,7 +15,7 @@ export const useUserStore = defineStore("user-store", {
                 this.users = data;
                 return data as IUser[];
             } catch (e) {
-                useToast().error(e.message);
+                // useToast().error(e.message);
             }
         },
 
@@ -24,7 +24,7 @@ export const useUserStore = defineStore("user-store", {
                 let data = await $fetch<IUser>(`${this.API_URL}/users/${id}`);
                 return data as IUser;
             } catch (e) {
-                useToast().error(e.message);
+                // useToast().error(e.message);
             }
         },
 
@@ -33,7 +33,7 @@ export const useUserStore = defineStore("user-store", {
                 let data = await $fetch<IUser>(`${this.API_URL}/users/${email}`);
                 return data as IUser;
             } catch (e) {
-                useToast().error(e.message);
+                // useToast().error(e.message);
             }
         },
         // Create a new motorcycle
@@ -43,7 +43,7 @@ export const useUserStore = defineStore("user-store", {
                 body: user,
             })
                 .catch((e) => {
-                    useToast().error(e.data.message);
+                    // useToast().error(e.data.message);
                 })
                 .then(async () => {
                     await this.getAll();
