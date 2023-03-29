@@ -17,7 +17,8 @@ Buying and selling second-hand motorcycle platform. The sellers will upload thei
 - Vue.js (front-end)
 - Node.js (JS runtime environment)
 - Mongo DB (database)
-- Express.js (backend)
+- Nuxt Nitro (backend)
+- Supabase (User Authentication)
 
 
 <!-- AUTO-GENERATED-CONTENT:END -->
@@ -32,6 +33,6 @@ Buying and selling second-hand motorcycle platform. The sellers will upload thei
 ## How to start
 
 1. Add mongo uri to `.env` file
-1. Install dependencies with `npm install --force` (Force if you get an error abot pinia)
-1. Run dev with `npm run dev`
-1. Build & deploy if you want to `npm run build`
+2. Install dependencies with `npm install --force` (Force if you get an error abot pinia)
+3. Run dev with `npm run dev`
+4. Build & deploy if you want to `npm run build`
