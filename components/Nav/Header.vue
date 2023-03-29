@@ -1,13 +1,14 @@
 <template>
 	<header class="w-full border-b border-gray-200 bg-white/50 backdrop-blur" style="background:#5c5470;">
 		<div class="flex items-center justify-between h-20 px-3 mx-auto max-w-7xl">
-      <NuxtLink href="/"  class="navbar-brand">
-                  <img src="/assets/images/au.png" class="logo"  alt="Icon"/>
-              </NuxtLink>
+      <NuxtLink to="/">
+        <img src="https://img.icons8.com/3d-fluency/94/null/motorcycle.png" alt="website icon" class="icon"/>
+      </NuxtLink>
 			<nav class="flex items-center px-20">
+
 				<template v-if="user" v-for="n in menu" :key="`menuItem${n.name}`">
 					<NuxtLink
-						class="px-3 py-2 text-sm font-medium text-slate-200 transition-all rounded-lg link hover:text-primary hover:bg-primary-50"
+						class="px-3 py-2 text-sm font-medium text-slate-200 transition-all rounded-lg link hover:text-primary hover:bg-primary-50 nav-item"
 						:to="n.link"
 						>{{ n.name }}
           </NuxtLink>
@@ -76,5 +77,15 @@
     width:60px;
     height:60px;
     margin-left: 20px
+  }
+
+  .nav-item {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
   }
 </style>

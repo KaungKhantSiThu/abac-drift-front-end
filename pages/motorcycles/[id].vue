@@ -78,11 +78,11 @@
         <hr>
         <div class="row" style="cursor: pointer;" >
           <div class="col-2 mt-2">
-            <img src="/assets/motorcycle/pepe.jpg" style="min-width:65px; margin-left: 10px;" class="rounded-circle" alt="">
+            <img src="/assets/images/stock-profile.png" style="min-width:45px; margin-left: 10px;" alt="profile">
           </div>
           <div class="col">
-            <h5 class="mt-2" style="margin-left: 20px; padding-top:8px;">{{ motorcycle.seller }}</h5>
-            <p><i class="fa-solid fa-location-dot text-muted" style="margin-left: 20px;"></i>Bangkok, 10240</p>
+            <h5 class="mt-2" style="margin-left: 20px; padding-top:8px;">{{ seller.username }}</h5>
+            <p><i class="fa-solid fa-location-dot text-muted" style="margin-left: 20px;"></i>{{seller.phoneNumber}}</p>
           </div>
         </div>
         <hr>
@@ -140,6 +140,7 @@ const appointment = ref({});
 const id  = useRoute().params.id as string;
 
 const motorcycle = await motorcycleStore.getById(id);
+const seller = await userStore.getByEmail(motorcycle.seller)
 
 const carouselIndex = ref(0);
 
