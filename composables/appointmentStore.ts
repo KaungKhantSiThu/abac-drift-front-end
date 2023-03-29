@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { IAppointment } from "~~/types";
 import useToast from "./useToast";
-import {useRuntimeConfig} from "#imports";
 export const useAppointmentStore = defineStore("appointment-store", {
     state: () => ({
         appointments: [] as IAppointment[],
@@ -37,7 +36,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
                 body: appointment,
             })
                 .catch((e) => {
-                    useToast().error(e.data.message);
+                    //useToast().error(e.data.message);
                 })
                 .then(async () => {
                     await this.getAll();
@@ -65,7 +64,7 @@ export const useAppointmentStore = defineStore("appointment-store", {
                 method: "DELETE",
             })
                 .catch((e) => {
-                    useToast().error(e.data.message);
+                    //useToast().error(e.data.message);
                 })
                 .then(async () => {
                     await this.getAll();

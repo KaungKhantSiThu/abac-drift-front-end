@@ -13,8 +13,8 @@
             <p class="fs-5">{{ new Date(event.datetime).getHours() + ':' + new Date(event.datetime).getMinutes() }}</p>
           </div>
           <div class="col">
-            <h5 class="card-text">Client</h5>
-            <p class="fs-5">{{ event.buyer }}</p>
+            <h5 class="card-text">{{ isBuyer ? "Seller" : "Buyer" }}</h5>
+            <p class="fs-5">{{ isBuyer ? seller.username : buyer.username }}</p>
           </div>
         </div>
 
@@ -62,12 +62,22 @@
 
 <script setup>
 
-defineProps({
+import {useUserStore} from "~/composables/userStore";
+
+const props = defineProps({
   event: {
     type: Object,
     required: true
   }
 })
+
+const user = useSupabaseUser();
+
+const userStore = useUserStore();
+const currentUser = await userStore.getByEmail(user.value.email)
+const isBuyer = currentUser.type === 'buyer'
+const buyer = await userStore.getByEmail(props.event.buyer)
+const seller = await userStore.getByEmail(props.event.seller)
 
 </script>
 

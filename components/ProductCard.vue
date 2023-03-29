@@ -47,11 +47,11 @@
 
 <script setup>
 
-const props = defineProps({
-motorcycle: {
-  type: Object,
-  required: true
-}
+defineProps({
+  motorcycle: {
+    type: Object,
+    required: true
+  }
 })
 
 </script>
@@ -79,8 +79,7 @@ box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
 .badge {
-  border: 1px solid;
-  border-color: #fc9134;
+  border: 1px solid #fc9134;
   background-color: #fc9134;
   max-width: 100px;
   height: 40px;

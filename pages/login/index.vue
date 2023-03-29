@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 
-import {useUserStore} from "~/composables/userStore";
+import { useUserStore } from "~/composables/userStore";
 
 
 const email = ref('')
