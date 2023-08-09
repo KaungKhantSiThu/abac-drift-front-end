@@ -33,6 +33,6 @@ Buying and selling second-hand motorcycle platform. The sellers can list their m
 ## How to start
 
 1. Add mongo uri to `.env` file
-2. Install dependencies with `npm install --force` (Force if you get an error abot pinia)
+2. Install dependencies with `npm install --force` (Force if you get an error about pinia)
 3. Run dev with `npm run dev`
 4. Build & deploy if you want to `npm run build`
